@@ -1,0 +1,187 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GMTRealTech NGO</title>
+
+<!-- Stylesheets -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="{% static "css/style.css" %} ">
+<link rel="stylesheet" href={% static "css/responsive.css" %}">
+<link rel="icon" href="{% static "images/Favicon.png" %}" type="image/x-icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+ <link rel="stylesheet" href="{% static "bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" %}">
+</head>
+<style>
+        a:link{
+            text-decoration: none!important;
+          }
+          html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+        </style>
+<!-- page wrapper -->
+<body class="boxed_wrapper">
+    <!-- .preloader -->
+    <div class="preloader"></div>
+    <!-- /.preloader -->
+
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- header-top -->
+        <div class="header-top bg-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-12 column">
+                        <div class="top-left">
+                            <ul class="social-content">
+                                <li>Follow Us:</li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-12 column">
+                        <div class="top-right">
+                            <ul class="right-content">
+                               <li style="color: white; font-weight: bolder; font-size: larger;">DEMO PURPOSE ONLY</li>
+                                <li><a href="#"><i class="fa fa-phone"></i>Call:  +91-99999999</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i>Email: text@test.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- header-top end -->
+    {% block header_block %}
+
+    {% endblock %}
+      
+
+    
+    {% block body_block %}
+
+    {% endblock %}
+    <!--Main Slider-->
+   
+
+
+    <!-- main-footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                        <div class="logo-widget footer-widget">
+                            <figure class="logo-box"><a href="index.heml"><img src="{% static "images/gmtlogo-white-footer.png" %}" alt=""></a></figure>
+                            <div class="text">
+                                <p>GMT Realtech NGO is a company which is determined to
+                                        reduce the rate of rising unemployment in the state of Bihar, India.The NGO, at the same time, is trying to fully implement the "Nal Jal Yojana"
+                                        in the state so that the people in the state of Bihar get more employed.</p>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-1 footer-column">
+                        <div class="service-widget footer-widget">
+                                <div class="footer-title">Menu</div>
+                                <ul class="list">
+                                    <li><a href="{% url 'front:index' %}">Home</a></li>
+                                    <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                    <li><a href="{% url 'front:currentjobs' %}">Jobs</a></li>
+                                    <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                  
+                                </ul>
+                            </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                        <div class="contact-widget footer-widget">
+                            <div class="footer-title">Contacts</div>
+                            <div class="text">
+                                <p>test adddress</p>
+                                <p>+91-99999999</p>
+                                <p>test@test.com</p>
+                                
+                            </div>
+                            <ul class="footer-social">
+                                <a href="{% url 'front:contact' %}"><button type="button" class="theme-btn">Send A Query</button></a>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- main-footer end -->
+
+
+    <!-- footer-bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 column">
+                    <div class="copyright"><a href="{% url 'front:index' %}">GMTRealTech</a> &copy; 2019 All Right Reserved</div>
+                    <div class="copyright">Made with ♥ by <a href="https://digicodeware.com/services/" target="_blank">DigiCodeWare</a></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 column">
+                    <ul class="footer-nav">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottome end -->
+
+
+   
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="fa fa-long-arrow-up"></span>
+</button>
+
+
+
+<!--jquery js -->
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/owl.carousel.min.js" %}"></script>
+<script src="{% static "js/wow.js" %}"></script>
+<script src="{% static "js/validation.js" %}"></script>
+<script src="{% static "js/jquery.fancybox.pack.js" %}"></script>
+<script src="{% static "js/SmoothScroll.js" %}"></script>
+<script src="{% static "js/gmaps.js" %}"></script>
+<script src="{% static "js/map-helper.js" %}"></script>
+<script src="{% static "js/isotope.js" %}"></script>
+<script src="{% static "js/jquery-ui.js" %}"></script>
+<script src="{% static "js/jquery.appear.js" %}"></script>
+<script src="{% static "js/jquery.countTo.js" %}"></script>
+<!-- main-js -->
+<script src="{% static "js/script.js" %}"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="{% static "bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" %}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
+</body><!-- End of .page_wrapper -->
+</html>

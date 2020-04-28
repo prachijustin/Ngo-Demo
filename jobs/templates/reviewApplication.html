@@ -1,0 +1,251 @@
+        
+    <!-- review form DIV-->
+    <div id="reviewForm">
+            <div id="print-wrapper" style="width:800px; margin:0 auto;">
+              <div class="container" >  
+                  <form role="form" method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %} 
+                  <h1 style="text-align: center;">VIEW/EDIT APPLICATION</h1>    
+                  <table class="tg" width="800" >
+                      <tr>
+                        <th class="tg-qtvz"><span style="font-weight:bold">Job Name:</span></th>
+                        <th class="tg-zs35"><input type="text" class="form-control" id="jobNameR" name="jobNameR" required></th>
+                        <th class="tg-qtvz"><span style="font-weight:bold">JobID: </span></th>
+                        <th class="tg-zs35"><input type="text" class="form-control" id="jobIDR" name="jobIDR" required></th>
+                      </tr>
+                      <tr>
+                        <td class="tg-y698" colspan="4"><span style="font-weight:bold">PERSONAL DETAILS</span></td>
+                      </tr>
+                     
+                      <tr>
+                        <td class="tg-9ikn"><span style="font-weight:bold">Candidate Name</span></td>
+                        <td class="tg-2bev" colspan="3"><input type="text" class="form-control" id="cfnameR" name="cfnameR" required>
+                          <input type="text" id="cmnameR" class="form-control" name="cmnameR">
+                        <input type="text" id="clnameR" class="form-control" name="clnameR" required></td>
+      
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Father/Husband Name</td>
+                        <td class="tg-2bev" colspan="3"><input type="text" class="form-control" id="ffnameR" name="ffnameR" required>
+                          <input type="text" class="form-control" id="fmnameR" name="fmnameR">
+                          <input type="text" class="form-control" id="flnameR" name="flnameR" required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Relation</td>
+                        <td class="tg-2bev"><input type="text" id="relR" class="form-control" name="relR" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Date of Birth</td>
+                        <td class="tg-2bev"><input type="text" id="dobR" class="form-control" name="dobR" required></td>
+                        <td class="tg-7z3s">Gender</td>
+                        <td class="tg-2bev"><input type="text" id="genR" class="form-control" name="genR" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Email ID</td>
+                        <td class="tg-2bev"><input type="text" id="emailR" class="form-control" name="emailR" required></td>
+                        <td class="tg-hkgo">Mobile</td>
+                        <td class="tg-2bev"><input type="text" id="phoneR" class="form-control" name="phoneR" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-55j3">Aadhaar Card</td>
+                        <td class="tg-2bev"><input type="text" id="aadhaarR" class="form-control" name="aadhaarR" required></td>
+                        <td class="tg-hkgo">Caste</td>
+                        <td class="tg-2bev"><input type="text" id="casteR" class="form-control" name="casteR" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-c9og" colspan="4">ADDRESS DETAILS</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Correspondence</td>
+                        <td class="tg-2bev"></td>
+                        <td class="tg-hkgo">Permanent</td>
+                        <td class="tg-2bev"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">House No.</td>
+                        <td class="tg-2bev"><input type="text" id="addr1R" class="form-control" name="addr1R" required></td>
+                        <td class="tg-hkgo">House No.</td>
+                        <td class="tg-2bev"><input type="text" id="addr2R" class="form-control" name="addr2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Village Name</td>
+                        <td class="tg-2bev"><input type="text" id="village1R" class="form-control" name="village1R" required></td>
+                        <td class="tg-hkgo">Village Name</td>
+                        <td class="tg-2bev"><input type="text" id="village2R" class="form-control" name="village2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Post Office</td>
+                        <td class="tg-2bev"><input type="text" id="post1R" class="form-control" name="post1R" required></td>
+                        <td class="tg-hkgo">Post Office</td>
+                        <td class="tg-2bev"><input type="text" id="post2R" class="form-control" name="post2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Panchayat</td>
+                        <td class="tg-0pky"><input type="text" id="panchayat1R" class="form-control" name="panchayat1R" required></td>
+                        <td class="tg-fymr">Panchayat</td>
+                        <td class="tg-0pky"><input type="text" id="panchayat2R" class="form-control" name="panchayat2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Ward</td>
+                        <td class="tg-0pky"><input type="text" id="ward1R" class="form-control" name="ward1R" required></td>
+                        <td class="tg-fymr">Ward</td>
+                        <td class="tg-0pky"><input type="text" id="ward2R" class="form-control" name="ward2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Block</td>
+                        <td class="tg-0pky"><input type="text" id="block1R" class="form-control" name="block1R" required></td>
+                        <td class="tg-fymr">Block</td>
+                        <td class="tg-0pky"><input type="text" id="block2R" class="form-control" name="block2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">District</td>
+                        <td class="tg-0pky"><input type="text" id="district1R" class="form-control" name="district1R" required></td>
+                        <td class="tg-fymr">District</td>
+                        <td class="tg-0pky"><input type="text" id="district2R" class="form-control" name="district2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">City</td>
+                        <td class="tg-0pky"><input type="text" id="city1R" class="form-control" name="city1R" required></td>
+                        <td class="tg-fymr">City</td>
+                        <td class="tg-0pky"><input type="text" id="city2R" class="form-control" name="city2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">PIN</td>
+                        <td class="tg-0pky"><input type="text" id="pin1R" class="form-control" name="pin1R" required></td>
+                        <td class="tg-fymr">PIN</td>
+                        <td class="tg-0pky"><input type="text" id="pin2R" class="form-control" name="pin2R" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-dvid" colspan="4">QUALIFICATION DETAILS</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0pky"><span style="font-weight:bold">Qualification</span></td>
+                        <td class="tg-0pky" colspan="3"><input type="text" id="qualR" class="form-control" name="qualR" required></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Details</td>
+                        <td class="tg-7btt" colspan="2">Board</td>
+                        <td class="tg-7btt">Percentage</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">10th</td>
+                        <td class="tg-0pky" colspan="2"><input type="text" id="board1R" class="form-control" name="board1R"></td>
+                        <td class="tg-0pky"><input type="text" id="percentage1R" class="form-control" name="percentage1R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">12th</td>
+                        <td class="tg-0pky" colspan="2"><input type="text" id="board2R" class="form-control" name="board2R"></td>
+                        <td class="tg-0pky"><input type="text" id="percentage2R" class="form-control" name="percentage2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Graduation</td>
+                        <td class="tg-0pky" colspan="2"><input type="text" id="board3R" class="form-control" name="board3R"></td>
+                        <td class="tg-0pky"><input type="text" id="percentage3R" class="form-control" name="percentage3R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-y698" colspan="4"><span style="font-weight:bold">UPLOADS</span></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7btt" colspan="2">Picture</td>
+                        <td class="tg-7btt">Signature in Hindi</td>
+                        <td class="tg-7btt">Signature in English</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7btt" colspan="2">
+                            <input class="form-control" type="file" name="picR" id="picR" accept="image/*" onchange="readPICR(this);"/><img id="picRR" src="#" /></td>
+                        <td class="tg-7btt"><input class="form-control" type="file" name="signhinR" id="signhinR" accept="image/*" onchange="readSIGNHINR(this);"><img id="signhinRR" src="#" /></td>
+                        <td class="tg-7btt"><input class="form-control" type="file" name="signengR" id="signengR" accept="image/*" onchange="readSIGNENGR(this);" ><img id="signengRR" src="#"/></td>
+                      </tr>
+                      <tr>
+                          <td class="tg-0pky"><span style="font-weight:bold">Amount To Pay</span></td>
+                          <td class="tg-0pky" colspan="3"><input type="text" class="form-control" id="amt" name="amt" readonly></td>
+                        </tr>
+                    </table> 
+                    <button type="submit" style="padding: 10px 50px; font-size: 20px;" class="btn btn-primary pull-right">Proceed To Pay</button>
+                    </form>
+                  
+              </div> 
+          </div>
+          </div>
+          <script type="text/javascript">
+            function switchReviewForm() {
+              var fullPath = document.querySelector('#picA>input[type=file]');
+                 
+                        console.log('---///::', fullPath)
+              var amount;
+                if(document.getElementById('casteA').value == 'General'){
+                    amount = '{{ genFee }}';
+                }
+                else if(document.getElementById('casteA').value == 'OBC'){
+                    amount = '{{ obcFee }}';
+                }
+                else if(document.getElementById('casteA').value == 'SC' || document.getElementById('casteA').value == 'ST'){
+                    amount = '{{ scstFee }}';
+                }
+                    if (document.getElementById('fillForm')) {          
+                        if (document.getElementById('fillForm').style.display == 'none') {
+                            document.getElementById('fillForm').style.display = 'block';
+                            document.getElementById('reviewForm').style.display = 'none';
+                        }           
+                          else{                      
+                            document.getElementById('fillForm').style.display = 'none';
+                            document.getElementById('reviewForm').style.display = 'block';
+                          }                    
+                  }
+                 
+                        document.getElementById('jobNameR').value = document.getElementById('jobNameA').value;
+                        document.getElementById('jobIDR').value = document.getElementById('jobIDA').value;
+                        document.getElementById('cfnameR').value = document.getElementById('cfnameA').value + ' ' +  document.getElementById('cmnameA').value + ' ' + document.getElementById('clnameA').value;
+                        document.getElementById('ffnameR').value = document.getElementById('ffnameA').value + ' ' + document.getElementById('fmnameA').value + ' ' + document.getElementById('flnameA').value;
+                        document.getElementById('relR').value = document.getElementById('relA').value;
+                        document.getElementById('dobR').value = document.getElementById('dobA').value;
+                        document.getElementById('genR').value = document.getElementById('genA').value;
+                        document.getElementById('emailR').value = document.getElementById('emailA').value;
+                        document.getElementById('phoneR').value = document.getElementById('phoneA').value;
+                        document.getElementById('aadhaarR').value = document.getElementById('aadhaarA').value;
+                        document.getElementById('casteR').value = document.getElementById('casteA').value;
+                        document.getElementById('addr1R').value = document.getElementById('addr1A').value;
+                        document.getElementById('addr2R').value = document.getElementById('addr2A').value;
+                        document.getElementById('village1R').value = document.getElementById('village1A').value;
+                        document.getElementById('village2R').value = document.getElementById('village2A').value;
+                        document.getElementById('post1R').value = document.getElementById('post1A').value;
+                        document.getElementById('post2R').value = document.getElementById('post2A').value;
+                        document.getElementById('panchayat1R').value = document.getElementById('panchayat1A').value;
+                        document.getElementById('panchayat2R').value = document.getElementById('panchayat2A').value;
+                        document.getElementById('ward1R').value = document.getElementById('ward1A').value;
+                        document.getElementById('ward2R').value = document.getElementById('ward2A').value;
+                        document.getElementById('block1R').value = document.getElementById('block1A').value;
+                        document.getElementById('block2R').value = document.getElementById('block2A').value;
+                        document.getElementById('district1R').value = document.getElementById('district1A').value;
+                        document.getElementById('district2R').value = document.getElementById('district2A').value;
+                        document.getElementById('city1R').value = document.getElementById('city1A').value;
+                        document.getElementById('city2R').value = document.getElementById('city2A').value;
+                        document.getElementById('pin1R').value = document.getElementById('pin1A').value;
+                        document.getElementById('pin2R').value = document.getElementById('pin2A').value;
+                        document.getElementById('qualR').value = document.getElementById('qualification').value;
+                        document.getElementById('board1R').value = document.getElementById('board1').value;
+                        document.getElementById('percentage1R').value = document.getElementById('percentage1').value;
+                        document.getElementById('board2R').value = document.getElementById('board2').value;
+                        document.getElementById('percentage2R').value = document.getElementById('percentage2').value;
+                        document.getElementById('board3R').value = document.getElementById('board3').value;
+                        document.getElementById('percentage3R').value = document.getElementById('percentage3').value;
+                        
+                        
+                                
+                        var picSrc = $('#pic').attr('src');
+                        $('#picRR').attr('src',picSrc).height(120).width(120);
+        
+                        var signhinSrc = $('#signhin').attr('src');
+                        $('#signhinRR').attr('src',signhinSrc).height(120).width(120);
+        
+                        var signengSrc = $('#signeng').attr('src');
+                        $('#signengRR').attr('src',signengSrc).height(120).width(120);
+        
+                        document.getElementById('amt').value = amount;
+                        console.log('---',amount)
+        
+                        
+                }
+          
+        </script>      

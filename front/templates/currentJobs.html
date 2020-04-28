@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block header_block %}
+  <!-- header-bottom -->
+  <div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 column">
+                <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmtlogo-black.png" %}" alt=""></a></figure>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 menu-column">
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->      
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li ><a href="{% url 'front:index' %}">Home</a>
+                                </li>
+                                <li><a href="{% url 'front:about' %}">About US</a></li>
+                                <li class="current dropdown"><a href="#">Jobs</a>
+                                    <ul>
+                                        <li class="current"><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                        <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                    </ul>
+                                </li>
+                                                
+                                <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 clearfix column">
+                <ul class="nav-right pull-right">
+                   
+                    <a href="{% url 'admindashboard:userLogin' %}" target="_blank"><li class="donate-box"><button class="donate-box-btn">Admin Login</button></li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- header-bottom end -->
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 column">
+                        <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmt-logo.png" %}" alt=""></a></figure>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 menu-column">
+                        <div class="menu-area">
+                            <nav class="main-menu navbar-expand-lg">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->      
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li ><a href="{% url 'front:index' %}">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                        <li class="current dropdown"><a href="#">Jobs</a>
+                                            <ul>
+                                                <li  class="current"><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                                <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                            </ul>
+                                        </li>
+                                                        
+                                        <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- sticky-header end -->
+    </header>
+    <!-- End Main Header -->
+{% endblock %}
+
+
+{% block body_block %}
+ <!-- page-title -->
+ <section class="page-title centred" style="background-image: url({% static "images/background/CurrentJobsGMT.png" %});">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">Current Jobs</div>
+            <ul class="bread-crumb">
+                <li><a href="{% url 'front:index' %}">Home</a></li>
+                <li>Current Jobs</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- page-title end -->
+
+
+<!-- cause-section -->
+<section class="cause-section cause-style-two causes-grid overlay-style-one sec-pad-2">
+    <div class="container">
+        <div class="row">
+            {% if not jobList %}
+            <h4 style="color: red;">No Current Jobs Right Now. Please check back after some time.</h4>
+            {% else %}
+                {% for p in jobList %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 cause-column">
+                        <div class="single-cause-content inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <figure class="image-box">
+                                <img src="{% static "images/resource/jobs.png" %}" alt="">
+                                <!--Overlay Box-->
+                                <div class="overlay-box">
+                                    <div class="overlay-inner">
+                                        <div class="content">
+                                            <a href="{% url 'front:viewJob' id=p.id %}" class="link"><i class="icon fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="lower-content">
+                                    <h4><a href="{% url 'front:viewJob' id=p.id %}">{{ p.jobName }}</a></h4>
+                                    <div class="text"><b>Qualification:</b> {{ p.qualification }}<br>
+                                        <b>Honorarium:</b> {{ p.payment }}<br>
+                                    <b>Total Vacancies:</b> {{p.vacancy}}</div>                                    
+                                    <div class="donate-box"><a href="{% url 'front:viewJob' id=p.id %}" target="_blank"><button class="donate-box-btn theme-btn-two">Read More</button></a></div>
+                                </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+         
+        </div>
+      
+    </div>
+</section>
+<!-- cause-section end -->
+
+{% endblock %}

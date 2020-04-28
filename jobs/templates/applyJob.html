@@ -1,0 +1,844 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+ <script src='https://www.google.com/recaptcha/api.js'></script>
+ <title>GMT Job Application </title>
+ <style>
+     #reviewForm {
+        display: none;
+    }
+    #paymentForm {
+        display: none;
+    }
+    #finalForm {
+        display: none;
+    }
+    
+ fieldset.scheduler-border {
+   border: 1px groove #ddd !important;
+   padding: 0 1.4em 1.4em 1.4em !important;
+   margin: 0 0 1.5em 0 !important;
+   -webkit-box-shadow:  0px 0px 0px 0px #000;
+           box-shadow:  0px 0px 0px 0px #000;
+}
+
+   legend.scheduler-border {
+       font-size: 1.2em !important;
+       font-weight: bold !important;
+       text-align: left !important;
+       width:auto;
+       padding:0 10px;
+       border-bottom:none;
+   }
+
+.tg1  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg1 td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg1 th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg1 .tg1-cly1{text-align:left;vertical-align:middle}
+.tg1 .tg1-yla0{font-weight:bold;text-align:left;vertical-align:middle}
+
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-7z3s{font-weight:bold;border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-c9og{font-weight:bold;background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-9ikn{border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-55j3{font-weight:bold;font-size:100%;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-dvid{font-weight:bold;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-qtvz{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-zs35{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-2bev{border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-hkgo{font-weight:bold;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-fymr{font-weight:bold;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+ 
+  #print-wrapper * {
+    visibility: visible;
+  }
+  .tg {
+    width: 100%;
+    height: 90vh;
+    border: solid;
+    table-layout: fixed;
+  }
+  
+}
+#g-recaptcha-response {
+    display: block !important;
+    position: absolute;
+    margin: -78px 0 0 0 !important;
+    width: 302px !important;
+    height: 76px !important;
+    z-index: -999999;
+    opacity: 0;
+}
+ </style>
+</head>
+<body>
+    <!--fill form DIV-->
+        <div id="fillForm">
+            <div class="container" style="padding:10px 10px;">
+                        <h1>JOB APPLICATION</h1>
+                        <br>
+                        <form role="form" id="myForm" method="POST" enctype="multipart/form-data">
+                          {% csrf_token %}
+                        <div class="row">
+                              <div class="col-xs-6 form-group">
+                                <label for="jobNameA">Job Name</label>
+                                <input type="text" class="form-control" name="jobName" id="jobNameA" value="{{ jobName }}" readonly>
+                              </div>
+                              <div class="col-xs-6 form-group">
+                                <label for="jobIDA">Job ID</label>
+                                <input type="text" class="form-control" name="jobID" id="jobIDA" value="{{ id }}" readonly>
+                              </div>
+                              
+                            </div>
+
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">PERSONAL DETAILS</legend>
+                            
+                                <div class="row">
+                                    
+                                    <div class="col-xs-4 form-group">
+                                        <label>* Candidate's First Name (Don't write Mr./Ms./Mrs.)</label>        
+                                        <input class="form-control" type="text" name="candidateFirstName" id="cfnameA" placeholder="First Name" required/>
+                                    </div>
+                                    <div class="col-xs-4 form-group">
+                                            <label>Candidate's Middle Name</label>
+                                        <input class="form-control" type="text" name="candidateMiddleName" id="cmnameA" placeholder="Middle Name"/>
+                                    </div>
+                                    
+                                 <div class="col-xs-4 form-group">
+                                         <label>* Candidate's Last Name</label>
+                                     <input class="form-control" type="text" name="candidateLastName" id="clnameA" placeholder="Last Name" required/>
+                                 </div>
+                                 <div class="col-xs-2 form-group">
+                                     <label>* Father/Husband</label>
+                                     <select class="form-control" name="relative" id="relA" required>
+                                         <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                         <option value="Father">Father</option>
+                                         <option value="Husband">Husband</option>
+                                 </select>
+                                 </div>
+                                 <div class="col-xs-4 form-group">
+                                           <label>* Father/Husband First Name (Don't write Mr.)</label>
+                                           
+                                           <input class="form-control" type="text" name="fatherFirstName" id="ffnameA" placeholder="First Name" required/>
+                                       </div>
+                                       <div class="col-xs-3 form-group">
+                                               <label>Father/Husband Middle Name</label>
+                                           <input class="form-control" type="text" name="fatherMiddleName" id="fmnameA" placeholder="Middle Name"/>
+                                       </div>
+                                       
+                                   <div class="col-xs-3 form-group">
+                                           <label>* Father/Husband Last Name</label>
+                                       <input class="form-control" type="text" name="fatherLastName" id="flnameA" placeholder="Last Name" required/>
+                                   </div>
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Date of Birth</label>
+                                        <input class="form-control" type="date" name="dob" id="dobA" required/>
+                                    </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Gender</label>
+                                        <select class="form-control" name="gender" id="genA" required>
+                                                <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Others">Others</option>
+                                        </select>
+                                      
+                                    </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Email ID </label>
+                                        <input class="form-control" type="email" name="email" id="emailA" placeholder="Email ID" required/>
+                                    </div>
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Mobile Number</label>
+                                        <input class="form-control" type="text" name="phone" id="phoneA"  placeholder="Phone Number" id="phone" required/>
+                                     </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                            <label>* Aadhaar Card Number</label>
+                                            <input class="form-control" type="text" name="aadhaar" id="aadhaarA" placeholder="Adhaar Card Number" required/>
+                                    </div>
+                                    <div class="col-xs-6 form-group">
+                                       <label>* Caste (Must have valid caste certificate. If not, select General) </label>
+                                       <select class="form-control" name="caste" id="casteA" required>
+                                           <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                           <option value="General">General</option>
+                                           <option value="OBC">OBC</option>
+                                           <option value="SC">SC</option>
+                                           <option value="ST">ST</option>
+                                   </select>
+                                   </div>
+                     
+                                </div>
+                        
+                        </fieldset>
+                     
+                        <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">ADDRESS DETAILS</legend>
+                            
+                                     
+                                            <div class="row">
+                                                
+                                                <div class="col-xs-6 form-group">
+                                                    <label>* Correspondence Address</label>
+                                                    
+                                                    <!-- <input class="form-control" type="text" placeholder="First Name"/> -->
+                                                    <textarea class="form-control" rows="3" placeholder="House No." id="addr1A" name="addr1" required></textarea>
+                                                </div>
+                                                <div class="col-xs-6 form-group">
+                                                        <label>* Permanent Address</label>
+                                                
+                                                    <textarea class="form-control" rows="3" placeholder="House No." id="addr2A" name="addr2" required></textarea>
+                                                </div>
+                                                <div class="col-xs-6 form-group">            
+                                                 <input class="form-control" type="text" placeholder="Village Name" id="village1A" name="village1" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">                    
+                                                     <input class="form-control" type="text" placeholder="Village Name" id="village2A" name="village2" required/>
+                                                 </div>
+                                                <div class="col-xs-6 form-group">            
+                                                 <input class="form-control" type="text" placeholder="Post Office" id="post1A" name="post1" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">                    
+                                                     <input class="form-control" type="text" placeholder="Post Office" id="post2A" name="post2" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">            
+                                                     <input class="form-control" type="text" placeholder="Panchayat" id="panchayat1A" name="panchayat1" required/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">                    
+                                                         <input class="form-control" type="text" placeholder="Panchayat" id="panchayat2A" name="panchayat2" required/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">            
+                                                         <input class="form-control" type="text" placeholder="Ward" id="ward1A" name="ward1" required/>
+                                                         </div>
+                                                         <div class="col-xs-6 form-group">                    
+                                                             <input class="form-control" type="text" placeholder="Ward" id="ward2A" name="ward2" required/>
+                                                         </div>
+                                                         <div class="col-xs-6 form-group">            
+                                                             <input class="form-control" type="text" placeholder="Block" id="block1A" name="block1" required/>
+                                                             </div>
+                                                             <div class="col-xs-6 form-group">                    
+                                                                 <input class="form-control" type="text" placeholder="Block" id="block2A" name="block2" required/>
+                                                             </div>
+                                                             
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="District" id="district1A" name="district1" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="District" id="district2A" name="district2" required/>
+                                                    </div>
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                    <input class="form-control" type="text" placeholder="City" name="city1" id="city1A" required/>
+                                                </div>
+                                                <div class="col-xs-6 form-group">
+                                                
+                                                    <input class="form-control" type="text" placeholder="City" name="city2" id="city2A" required/>
+                                                </div>
+                                
+                                              
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="PIN Code(6 digits)" pattern="[0-9]+" name="pin1" id="pin1A" maxlength="6" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="PIN Code(6 digits)" pattern="[0-9]+" name="pin2" id="pin2A" maxlength="6" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                         <input class="form-control" type="text"  value="Bihar" readonly/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">
+                                                     
+                                                         <input class="form-control" type="text" Value="Bihar" readonly/>
+                                                     </div>
+                                
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="filladdress">
+                                                    <label class="custom-control-label" for="filladdress">Permanent Same As Correspondence</label>
+                                                  </div>
+                                        
+                                        
+                        </fieldset>
+                        
+                        <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">QUALIFICATION DETAILS</legend>
+                            
+                                    
+                                        
+                                        <div class="form-group row">
+                                            <label for="ii" class="col-sm-2 col-form-label">* Last Education Qualification</label>
+                                            <div class="col-sm-8">
+                                                    <!-- <input class="form-control" type="text" placeholder="edu" name="edu" /> -->
+                     
+                                            <select id="qualification" name="qualification" class="form-control" required>
+                                                    <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                                    <option value="Graduated">Graduated</option>
+                                                    <option value="High School">12th</option>
+                                                    <option value="10th">10th</option>
+                                                  </select>
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                        <div class="row">
+                                                <div class="col-xs-12 form-group">
+                                                <label>* Education Qualification Details (Leave blank if not available)</label>
+                                                    <table class="tg1">
+                                                            <tr>
+                                                              <th class="tg1-yla0">S.R.No.</th>
+                                                              <th class="tg1-yla0">NAME OF EXAM</th>
+                                                              <th class="tg1-yla0">BOARD/UNIVERSITY</th>
+                                                              <th class="tg1-yla0">MAX MARKS</th>
+                                                              <th class="tg1-yla0">OBTAINED MARKS</th>
+                                                              <th class="tg1-yla0">PERCENTAGE</th>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="tg-0lax">
+                                                                <input  class="form-control" name="srno"  value="1" readonly>
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="text" class="form-control" name="exam1"  value="10th" readonly>
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="text" class="form-control" name="board1" id="board1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="number" class="form-control" name="max_marks1" id="max_marks1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="number" class="form-control" name="obt_marks1" id="obt_marks1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input class="form-control" name="percentage1" id="percentage1" readonly>
+                                                              </td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="tg-0lax">
+                                                                      <input class="form-control" name="srno" value="2" readonly>
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="text" class="form-control" name="exam2" value="12th" readonly >
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="text" class="form-control" name="board2" id="board2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="number" class="form-control" name="max_marks2" id="max_marks2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="number" class="form-control" name="obt_marks2" id="obt_marks2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input class="form-control" name="percentage2" id="percentage2" readonly>
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                        <td class="tg-0lax">
+                                                                          <input class="form-control" name="srno"  value="3" readonly>
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="text" class="form-control" name="exam3" value="Graduation" readonly>
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="text" class="form-control" name="board3" id="board3">
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="number" class="form-control" name="max_marks3" id="max_marks3" >
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="number" class="form-control" name="obt_marks3" id="obt_marks3">
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input class="form-control" name="percentage3" id="percentage3" readonly>
+                                                                        </td>
+                                                                      </tr>
+                                                                     
+                                                          </table>
+                                                          </div>
+                                    
+                                    </div>
+                            
+                            </fieldset>
+                     
+                            <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border">UPLOADS</legend>
+                                    
+                                            
+                                        <div class="row">
+                                                <div class="col-xs-4 form-group">
+                                                        <img id="pic" src="#" />
+                                                        <br>
+                                                        <label>Passport Size Picture</label>
+                                                        
+                                                        <input class="form-control" type="file" name="pic" id="picA" accept="image/*" onchange="readPIC(this);" required/>
+                                                    </div>
+                                            <div class="col-xs-4 form-group">
+                                                    <img id="signhin" src="#"/>
+                                                    <br>
+                                                <label>Signature in Hindi</label>
+                                                
+                                                <input class="form-control" type="file" name="signhin" id="signhinA" accept="image/*" onchange="readSIGNHIN(this);" required/>
+                                            </div>
+                                    
+                                            <div class="col-xs-4 form-group">
+                                                    <img id="signeng" src="#" />
+                                                    <br>
+                                                <label>Signature in English</label>
+                                                
+                                                <input class="form-control" type="file" name="signeng" id="signengA" accept="image/*" onchange="readSIGNENG(this);"required />
+                                            </div>
+                     
+                                           
+                                        </div>
+                                        <label>-- Images size should be less than 2 MB</label>
+                                        <br>
+                                        <label>-- Images should be clear.</label>
+                                        <br>
+                                        <label>-- Allowed Image format: .jpg/.jpeg/.png/.bmp</label>
+                                </fieldset>
+                                <div class="form-group">
+                                                <div class="g-recaptcha" data-sitekey="{{sitekey}}"></div>
+                                                
+                                            </div>
+                                <button type="submit"  style="padding: 10px 50px; font-size: 20px;margin:10px;" class="btn btn-primary pull-right">Proceed To Pay</button> 
+                                                           
+                                <button type="button" onclick="review();"  style="padding: 10px 50px; font-size: 20px;margin:10px;" class="btn btn-primary pull-right">Preview Application</button> 
+
+                            </form>
+                            {% if code != "NO" %}
+                            <div class="alert alert-success alert-dismissible" style="display: none;">
+                          {% else %}
+                              <div class="alert alert-success alert-dismissible" style="display: block;">
+                          {% endif %}
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                  <h4><i class="icon fa fa-cross"></i> {{ msg }}</h4>    
+                              </div>            
+            </div>
+        </div>
+          <!-- review form DIV-->
+    <div id="reviewForm">
+        <style>
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg .tg-7z3s{font-weight:bold;border-color:#656565;text-align:left;vertical-align:middle}
+        .tg .tg-c9og{font-weight:bold;background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+        .tg .tg-9ikn{border-color:#656565;text-align:left;vertical-align:middle}
+        .tg .tg-55j3{font-weight:bold;font-size:100%;border-color:#656565;text-align:left;vertical-align:top}
+        .tg .tg-dvid{font-weight:bold;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+        .tg .tg-qtvz{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:middle}
+        .tg .tg-zs35{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+        .tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+        .tg .tg-2bev{border-color:#656565;text-align:left;vertical-align:top}
+        .tg .tg-hkgo{font-weight:bold;border-color:#656565;text-align:left;vertical-align:top}
+        .tg .tg-fymr{font-weight:bold;border-color:inherit;text-align:left;vertical-align:top}
+        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+        .tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+        </style>
+            <div id="print-wrapper" style="width:800px;">
+              <div class="container" >  
+                  
+                  <h1 style="text-align: center;">REVIEW APPLICATION</h1>    
+                  <table class="tg" width="800" >
+                        <th class="tg-qtvz"><span style="font-weight:bold">Job Name:</span></th>
+                        <th class="tg-zs35" id="jobNameR"></th>
+                        <th class="tg-qtvz"><span style="font-weight:bold">JobID: </span></th>
+                        <th class="tg-zs35" id="jobIDR"></th>
+                      </tr>
+                      <tr>
+                        <td class="tg-y698" colspan="4"><span style="font-weight:bold">PERSONAL DETAILS</span></td>
+                      </tr>
+                     
+                      <tr>
+                        <td class="tg-9ikn"><span style="font-weight:bold">Candidate Name</span></td>
+                        <td class="tg-2bev" colspan="3" id="cfnameR"></td>
+      
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Father/Husband Name</td>
+                        <td class="tg-2bev" colspan="3" id="ffnameR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Relation</td>
+                        <td class="tg-2bev" id="relR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7z3s">Date of Birth</td>
+                        <td class="tg-2bev" id="dobR"></td>
+                        <td class="tg-7z3s">Gender</td>
+                        <td class="tg-2bev" id="genR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Email ID</td>
+                        <td class="tg-2bev" id="emailR"></td>
+                        <td class="tg-hkgo">Mobile</td>
+                        <td class="tg-2bev" id="phoneR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-55j3">Aadhaar Card</td>
+                        <td class="tg-2bev" id="aadhaarR"></td>
+                        <td class="tg-hkgo">Caste</td>
+                        <td class="tg-2bev" id="casteR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-c9og" colspan="4">ADDRESS DETAILS</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Correspondence</td>
+                        <td class="tg-2bev"></td>
+                        <td class="tg-hkgo">Permanent</td>
+                        <td class="tg-2bev"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">House No.</td>
+                        <td class="tg-2bev" id="addr1R"></td>
+                        <td class="tg-hkgo">House No.</td>
+                        <td class="tg-2bev" id="addr2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Village Name</td>
+                        <td class="tg-2bev" id="village1R"></td>
+                        <td class="tg-hkgo">Village Name</td>
+                        <td class="tg-2bev" id="village2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-hkgo">Post Office</td>
+                        <td class="tg-2bev" id="post1R"></td>
+                        <td class="tg-hkgo">Post Office</td>
+                        <td class="tg-2bev" id="post2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Panchayat</td>
+                        <td class="tg-0pky" id="panchayat1R"></td>
+                        <td class="tg-fymr">Panchayat</td>
+                        <td class="tg-0pky" id="panchayat2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Ward</td>
+                        <td class="tg-0pky" id="ward1R"></td>
+                        <td class="tg-fymr">Ward</td>
+                        <td class="tg-0pky" id="ward2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Block</td>
+                        <td class="tg-0pky" id="block1R"></td>
+                        <td class="tg-fymr">Block</td>
+                        <td class="tg-0pky" id="block2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">District</td>
+                        <td class="tg-0pky" id="district1R"></td>
+                        <td class="tg-fymr">District</td>
+                        <td class="tg-0pky" id="district2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">City</td>
+                        <td class="tg-0pky" id="city1R"></td>
+                        <td class="tg-fymr">City</td>
+                        <td class="tg-0pky" id="city2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">PIN</td>
+                        <td class="tg-0pky" id="pin1R"></td>
+                        <td class="tg-fymr">PIN</td>
+                        <td class="tg-0pky" id="pin2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-dvid" colspan="4">QUALIFICATION DETAILS</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0pky"><span style="font-weight:bold">Qualification</span></td>
+                        <td class="tg-0pky" colspan="3" id="qualR"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Details</td>
+                        <td class="tg-7btt" colspan="2">Board</td>
+                        <td class="tg-7btt">Percentage</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">10th</td>
+                        <td class="tg-0pky" colspan="2" id="board1R"></td>
+                        <td class="tg-0pky" id="percentage1R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">12th</td>
+                        <td class="tg-0pky" colspan="2" id="board2R"></td>
+                        <td class="tg-0pky" id="percentage2R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-fymr">Graduation</td>
+                        <td class="tg-0pky" colspan="2" id="board3R"></td>
+                        <td class="tg-0pky" id="percentage3R"></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-y698" colspan="4"><span style="font-weight:bold">UPLOADS</span></td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7btt" colspan="2">Picture</td>
+                        <td class="tg-7btt">Signature in Hindi</td>
+                        <td class="tg-7btt">Signature in English</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-7btt" colspan="2"><img id="picRR" src="#" /></td>
+                        <td class="tg-7btt"><img id="signhinRR" src="#" /></td>
+                        <td class="tg-7btt"><img id="signengRR" src="#"/></td>
+                      </tr>
+                      <tr>
+                          <td class="tg-0pky"><span style="font-weight:bold">Amount To Pay</span></td>
+                          <td class="tg-0pky" colspan="3" id="amt"></td>
+                        </tr>
+                    </table> 
+                
+                  
+              </div> 
+          </div>
+          </div>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+    function review(){
+        document.getElementById('jobNameR').innerHTML = document.getElementById('jobNameA').value;
+        document.getElementById('jobIDR').innerHTML = document.getElementById('jobIDA').value;
+        document.getElementById('cfnameR').innerHTML = document.getElementById('cfnameA').value + ' ' +  document.getElementById('cmnameA').value + ' ' + document.getElementById('clnameA').value;
+        document.getElementById('ffnameR').innerHTML = document.getElementById('ffnameA').value + ' ' + document.getElementById('fmnameA').value + ' ' + document.getElementById('flnameA').value;
+        document.getElementById('relR').innerHTML = document.getElementById('relA').value;
+        document.getElementById('dobR').innerHTML = document.getElementById('dobA').value;
+        document.getElementById('genR').innerHTML = document.getElementById('genA').value;
+        document.getElementById('emailR').innerHTML = document.getElementById('emailA').value;
+        document.getElementById('phoneR').innerHTML = document.getElementById('phoneA').value;
+        document.getElementById('aadhaarR').innerHTML = document.getElementById('aadhaarA').value;
+        document.getElementById('casteR').innerHTML = document.getElementById('casteA').value;
+        document.getElementById('addr1R').innerHTML = document.getElementById('addr1A').value;
+        document.getElementById('addr2R').innerHTML = document.getElementById('addr2A').value;
+        document.getElementById('village1R').innerHTML = document.getElementById('village1A').value;
+        document.getElementById('village2R').innerHTML = document.getElementById('village2A').value;
+        document.getElementById('post1R').innerHTML = document.getElementById('post1A').value;
+        document.getElementById('post2R').innerHTML = document.getElementById('post2A').value;
+        document.getElementById('panchayat1R').innerHTML = document.getElementById('panchayat1A').value;
+        document.getElementById('panchayat2R').innerHTML = document.getElementById('panchayat2A').value;
+        document.getElementById('ward1R').innerHTML = document.getElementById('ward1A').value;
+        document.getElementById('ward2R').innerHTML = document.getElementById('ward2A').value;
+        document.getElementById('block1R').innerHTML = document.getElementById('block1A').value;
+        document.getElementById('block2R').innerHTML = document.getElementById('block2A').value;
+        document.getElementById('district1R').innerHTML = document.getElementById('district1A').value;
+        document.getElementById('district2R').innerHTML = document.getElementById('district2A').value;
+        document.getElementById('city1R').innerHTML = document.getElementById('city1A').value;
+        document.getElementById('city2R').innerHTML = document.getElementById('city2A').value;
+        document.getElementById('pin1R').innerHTML = document.getElementById('pin1A').value;
+        document.getElementById('pin2R').innerHTML = document.getElementById('pin2A').value;
+        document.getElementById('qualR').innerHTML = document.getElementById('qualification').value;
+        document.getElementById('board1R').innerHTML = document.getElementById('board1').value;
+        document.getElementById('percentage1R').innerHTML = document.getElementById('percentage1').value;
+        document.getElementById('board2R').innerHTML = document.getElementById('board2').value;
+        document.getElementById('percentage2R').innerHTML = document.getElementById('percentage2').value;
+        document.getElementById('board3R').innerHTML = document.getElementById('board3').value;
+        document.getElementById('percentage3R').innerHTML = document.getElementById('percentage3').value;
+        
+        
+                
+        var picSrc = $('#pic').attr('src');
+        $('#picRR').attr('src',picSrc).height(120).width(120);
+
+        var signhinSrc = $('#signhin').attr('src');
+        $('#signhinRR').attr('src',signhinSrc).height(120).width(120);
+
+        var signengSrc = $('#signeng').attr('src');
+        $('#signengRR').attr('src',signengSrc).height(120).width(120);
+
+        var amount;
+        if(document.getElementById('casteA').value == 'General'){
+            amount = '{{ genFee }}';
+        }
+        else if(document.getElementById('casteA').value == 'OBC'){
+            amount = '{{ obcFee }}';
+        }
+        else if(document.getElementById('casteA').value == 'SC' || document.getElementById('casteA').value == 'ST'){
+            amount = '{{ scstFee }}';
+        }
+        document.getElementById('amt').innerHTML = amount;
+
+        var divText = document.getElementById("reviewForm").outerHTML;
+        var myWindow = window.open('','','width=1000,height=1500');
+        var doc = myWindow.document;
+        doc.open();
+        doc.write(divText);
+        doc.close();
+    }
+  $(document).ready(function(){		
+    $("#filladdress").on("click", function(){
+         if (this.checked) { 
+                $("#addr2A").val($("#addr1A").val());
+                $("#village2A").val($("#village1A").val());
+                $("#post2A").val($("#post1A").val());
+                $("#panchayat2A").val($("#panchayat1A").val());
+                $("#ward2A").val($("#ward1A").val());
+                $("#block2A").val($("#block1A").val());
+                $("#district2A").val($("#district1A").val());
+                $("#city2A").val($("#city1A").val());  
+                $("#pin2A").val($("#pin1A").val());                            
+    }
+    else {
+        $("#addr2A").val('');
+        $("#village2A").val('');
+        $("#post2A").val('');
+        $("#panchayat2A").val('');
+        $("#ward2A").val('');
+        $("#block2A").val('');
+        $("#district2A").val('');
+        $("#city2A").val('');     
+        $("#state2A").val('');
+        $("#pin2A").val('');      
+    }
+    });
+  });
+ 
+  $('#max_marks1, #obt_marks1').change(function() {
+    var total_marks = parseFloat($('#max_marks1').val());
+    var obt_marks = parseFloat($('#obt_marks1').val());
+    //var viva_marks = parseFloat($('#viva_marks').val()) || 0;
+ 
+    $('#percentage1').val(((obt_marks * 100) / total_marks).toFixed(2));
+  })
+  $('#max_marks2, #obt_marks2').change(function() {
+    var total_marks = parseFloat($('#max_marks2').val());
+    var obt_marks = parseFloat($('#obt_marks2').val());
+    //var viva_marks = parseFloat($('#viva_marks').val()) || 0;
+ 
+    $('#percentage2').val(((obt_marks * 100) / total_marks).toFixed(2));
+  })
+  $('#max_marks3, #obt_marks3').change(function() {
+    var total_marks = parseFloat($('#max_marks3').val());
+    var obt_marks = parseFloat($('#obt_marks3').val());
+    //var viva_marks = parseFloat($('#viva_marks').val()) || 0;
+ 
+    $('#percentage3').val(((obt_marks * 100) / total_marks).toFixed(2));
+  })
+  $('#max_marks4, #obt_marks4').change(function() {
+    var total_marks = parseFloat($('#max_marks4').val());
+    var obt_marks = parseFloat($('#obt_marks4').val());
+    //var viva_marks = parseFloat($('#viva_marks').val()) || 0;
+ 
+    $('#percentage4').val(((obt_marks * 100) / total_marks).toFixed(2));
+  })
+  $('#max_marks5, #obt_marks5').change(function() {
+    var total_marks = parseFloat($('#max_marks5').val());
+    var obt_marks = parseFloat($('#obt_marks5').val());
+    //var viva_marks = parseFloat($('#viva_marks').val()) || 0;
+ 
+    $('#percentage5').val(((obt_marks * 100) / total_marks).toFixed(2));
+  })
+ 
+  function readPIC(input) {
+    
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var FileSize = input.files[0].size / 1024 / 1024; // in MB
+               if (FileSize > 2) {
+                   alert('File size exceeds 2 MB');
+                   $('#pic').val('');
+               } 
+               else{
+                 reader.onload = function (e) {
+                    $('#pic')
+                        .attr('src', e.target.result)
+                        .width(120)
+                        .height(120);
+                };
+                reader.readAsDataURL(input.files[0]);
+               }
+ 
+            }
+          
+
+        }
+ 
+        function readSIGNHIN(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var FileSize = input.files[0].size / 1024 / 1024; // in MB
+                if (FileSize > 2) {
+                   alert('File size exceeds 2 MB');
+                   $('#signhin').val('');
+               } 
+               else{
+                reader.onload = function (e) {
+                    $('#signhin')
+                        .attr('src', e.target.result)
+                        .width(120)
+                        .height(120);
+                };
+                reader.readAsDataURL(input.files[0]);
+               }
+            }
+        }
+        function readSIGNENG(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var FileSize = input.files[0].size / 1024 / 1024; // in MB
+                if (FileSize > 2) {
+                   alert('File size exceeds 2 MB');
+                   $('#signeng').val('');
+               } 
+               else{
+                reader.onload = function (e) {
+                    $('#signeng')
+                        .attr('src', e.target.result)
+                        .width(120)
+                        .height(120);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
+        }
+        
+        
+     $(window).load(function()
+     {
+      var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+    if($recaptcha) {
+        $recaptcha.setAttribute("required", "required");
+    }   
+    var phones = [{ "mask": "(###) ###-####"}];
+     $('#phoneA').inputmask({ 
+         mask: phones, 
+         greedy: false, 
+         definitions: { '#': { validator: "[0-9]", cardinality: 1}} });
+ 
+         var adhs = [{ "mask": "####-####-####"}];
+     $('#aadhaarA').inputmask({ 
+         mask: adhs, 
+         greedy: false, 
+         definitions: { '#': { validator: "[0-9]", cardinality: 1}} });
+ });
+ 
+ </script>
+ 
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>

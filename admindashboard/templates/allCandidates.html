@@ -1,0 +1,87 @@
+{% extends "dashbase.html" %}
+{% block body_block %}
+{% load staticfiles %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        All Applied Candidates
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+            <div class="box">
+                  
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                            <tr>
+                              <th>SR.No.</th>
+                              <th>Application No.</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Relative Name</th>
+                              <th>Relation</th>
+                              <th>Job Applied</th>
+                              <th>Job ID</th>
+                              <th>Qualification</th>
+                              <th>Status</th>
+                              <th>View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                          
+                           {% for p in queryuser %}
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ p.pk }}</td>
+                              <td>{{ p.candidateFirstName }} {{ p.candidateMiddleName }} {{ p.candidateLastName }}</td>
+                              <td>{{ p.email }}</td>
+                              <td>{{ p.fatherFirstName }} {{ p.fatherMiddleName }} {{ p.fatherLastName }}</td>
+                              <td>{{ p.relativeType }}</td>
+                              <td>{{ p.jobName }}</td>
+                              <td>{{ p.jobID }}</td>
+                              <td>{{ p.qualification }}</td>
+                              <td>
+                              {% if p.status == "APPL" %}
+                                  <span class="label label-primary">Applied</span>
+                              {% else %}
+                                    <span class="label label-success">Shortlisted</span>
+                              {% endif %}
+                              </td>
+                              <td>
+                                  <a href="{% url 'admindashboard:printCand' id=p.id %}" target="_blank"><span class="badge bg-yellow">Print</span></a>
+                              </td>
+                            </tr>
+                           
+                            {% endfor %}
+                            </tbody>
+                           
+                          </table>
+      </div>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+
+        </section>
+        <!-- right col -->
+      </div>
+
+      
+{% endblock %}  
+
+  

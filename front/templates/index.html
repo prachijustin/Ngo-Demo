@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block header_block %}
+  <!-- header-bottom -->
+<style>
+a:link{
+  text-decoration: none!important;
+}
+</style>
+ <!-- header-bottom -->
+ <div class="header-bottom">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 column">
+                <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmtlogo-black.png" %}" alt=""></a></figure>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 menu-column">
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                            <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                      <span class="sr-only">Toggle navigation</span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Project name</a>
+                                  </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="navigation clearfix">
+                                 
+                                <li class="current"><a href="{% url 'front:index' %}">Home</a>
+                                </li>
+                                <li><a href="{% url 'front:about' %}">About</a></li>
+                                <li class="dropdown"><a href="#">Jobs</a>
+                                    <ul>
+                                        <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                    
+                                        <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                    </ul>
+                                </li>
+                                                          
+                                <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 clearfix column">
+                <ul class="nav-right pull-right">
+                        <a href="{% url 'admindashboard:userLogin' %}" target="_blank"><li class="donate-box"><button class="donate-box-btn">Admin Login</button></li></a>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- header-bottom end -->
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 column">
+                        <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmt-logo.png" %}" alt=""></a></figure>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 menu-column">
+                        <div class="menu-area">
+                            <nav class="main-menu navbar-expand-lg">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->      
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li class="current"><a href="{% url 'front:index' %}">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                        <li class="dropdown"><a href="#">Jobs</a>
+                                            <ul>
+                                                <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                                <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                            </ul>
+                                        </li>
+                                                        
+                                        <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- sticky-header end -->
+    </header>
+    <!-- End Main Header -->
+{% endblock %}
+
+{% block body_block %}
+
+
+
+<section class="main-slider">
+        
+    <div class="main-slider-carousel owl-carousel owl-theme slide-nav">
+        
+        <div class="slide" style="background-image:url({% static "images/main-slider/gmt_jobs.png" %})">
+            <div class="container">
+                <div class="content">
+                    <h1>We, <br> at<span> GMTRealTech,</span><br>Offer Jobs under Bihar Government.</h1>
+                    <div class="text">Check out the lastest jobs here</div>
+                    <div class="donate-box"><a href="{% url 'front:currentjobs' %}"><button class="donate-box-btn theme-btn">Check Out Jobs And Apply Now</button></a></div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="slide" style="background-image:url({% static "images/main-slider/sliderGMT.png" %})">
+            <div class="container">
+                <div class="content">
+                        <h1>Every youth should be employed.<br /><span> GMTRealTech</span> aims for this.</h1>
+                        <div class="text">Check out the lastest job here</div>
+                        <div class="donate-box"><a href="{% url 'front:currentjobs' %}"><button class="donate-box-btn theme-btn">Check Out Jobs And Apply Now</button></a></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+<!--End Main Slider-->
+
+
+<!-- feature-section -->
+<div class="feature-section centred">
+    <div class="container">
+        <div class="feature-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 feature-column">
+                    <div class="single-feature-content" style="background-image: url(images/resource/feature-1.jpg);">
+                        <div class="icon-box"><i class="fa fa-suitcase"></i></div>
+                        <div class="link"><a href="#">Jos For All</a></div>
+                        <div class="text">Jobs for all the unemployed people in Bihar state.</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 feature-column">
+                    <div class="single-feature-content" style="background-image: url(images/resource/feature-2.jpg);">
+                        <div class="icon-box"><i class="fa fa-users"></i></div>
+                        <div class="link"><a href="#">Employment To All</a></div>
+                        <div class="text">Opportunity to every resident of Bihar to earn.</div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 feature-column">
+                    <div class="single-feature-content" style="background-image: url(images/resource/feature-3.jpg);">
+                        <div class="icon-box"><i class="fa fa-smile-o"></i></div>
+                        <div class="link"><a href="#">Happiness To All</a></div>
+                        <div class="text">Jobs for all age group, caste and women.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- feature-section -->
+
+
+<!-- about-section -->
+<section class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 about-column">
+                <div class="about-content">
+                    <div class="title">We Provide <span>Jobs To People Of All Age </span> Under Govt. of Bihar</div>
+                    <div class="text">Our aim is to provide jobs to the residents of Bihar (under Bihar Govt.) who are willing to earn at their own.</div>
+                    <ul class="list">
+                        <li>We provide jobs at small divisions of Bihar state as well.</li>
+                        <li>Every person in Bihar should be employed.</li>
+                    </ul>
+                    <div class="link"><a href="{% url 'front:currentjobs' %}">Get Started</a></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 video-column">
+                <figure class="img-box"><img src="{% static "images/resource/jobGMT.png" %}" alt=""></figure>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about-section end -->
+
+
+<!-- cause-section -->
+<section class="cause-section">
+    <div class="cause-top-content overlay-bg centred" style="background-image: url(images/background/feature.jpg);">
+        <div class="container">
+            <div class="top-title">Latest Jobs</div>
+            <div class="top-text">Check out the lastest jobs here</div>
+        </div>
+    </div>
+    <div class="cause-bottom-content overlay-style-one">
+        <div class="container">
+            <div class="cause-content">
+                <div class="three-column-carousel">
+                    {% if not jobList %}
+                    <h4 style="color: red;">No Current Jobs Right Now. Please check back after some time.</h4>
+                    {% else %}
+                    {% for p in jobList %}
+                    <div class="single-cause-content inner-box">                    
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/jobs.png" %}" alt="">
+                            <!--Overlay Box-->
+                            <div class="overlay-box">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'front:viewJob' id=p.id %}l" class="link"><i class="icon fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="lower-content">
+                            <h4><a href="{% url 'front:viewJob' id=p.id %}">{{p.jobName}}</a></h4>
+                            <div class="text"><b>Qualification:</b> {{ p.qualification }}<br>
+                                <b>Honorarium:</b> {{ p.payment }}<br>
+                            <b>Total Vacancies:</b> {{p.vacancy}}</div>             
+                            
+                            <div class="donate-box"><a href="{% url 'front:viewJob' id=p.id %}"><button class="donate-box-btn theme-btn-two">View More</button></a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cause-section end -->
+
+
+
+
+
+
+
+<!-- event-section -->
+<section class="event-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-10 col-sm-12 event-column">
+                    <div class="event-content">
+                        <div class="top-title">Upcoming Jobs</div>
+                        <div class="top-text">Stay Updated with us to know upcoming jobs.</div>
+                        {% if not upcom %}
+                            <h4 style="color: red;">No Upcoming Jobs Right Now.</h4>
+                        {% else %}
+                        {% for q in upcom %}
+                        
+                        <div class="single-event-content wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="date"><h4>{{q.startDate}}</h4></div>
+                            <h4><a href="{% url 'front:viewJob' id=q.id %}">{{q.jobName}}</a></h4>
+                            <ul class="info-box">
+                                <li><b>Honorarium:</b> <i class="fa fa-rupee"></i>{{q.payment}}</li>
+                            </ul>
+                            <div class="text"><b>Qualification:</b> {{q.qualification}}</div>
+                            
+                        </div>
+                        {% endfor %}
+                       {% endif %}
+                       
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-10 col-sm-12 counter-column">
+                        <div class="fact-counter centred">
+                            <div class="counter-content clearfix">
+                                <div class="single-counter-content">
+                                    <article class="column wow fadeIn" data-wow-duration="0ms">
+                                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{joblen}}">0</span></div>
+                                    </article>
+                                    <div class="text">Job(s) Added</div>
+                                </div>
+                                <div class="single-counter-content">
+                                    <article class="column wow fadeIn" data-wow-duration="0ms">
+                                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{candlen}}">0</span></div>
+                                    </article>
+                                    <div class="text">Candidate(s) Applied</div>
+                                </div>
+                                <div class="single-counter-content">
+                                    <article class="column wow fadeIn" data-wow-duration="0ms">
+                                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{querlen}}">0</span></div>
+                                    </article>
+                                    <div class="text">People Queries Reached</div>
+                                </div>
+                                <div class="single-counter-content">
+                                    <article class="column wow fadeIn" data-wow-duration="0ms">
+                                        <div class="count-outer"><span class="count-text">💼</span></div>
+                                    </article>
+                                    <div class="text">Jobs For All</div>
+                                </div>
+                            </div>
+                            <figure class="img-box"><img src="{% static "images/resource/1.jpg" %}" alt=""></figure>
+                        </div>
+                    </div>
+            </div>
+            
+            <div><a href="{% url 'front:upcomingjobs' %}"><button type="button" class="theme-btn">View More</button></a></div>
+
+        </div>
+    </section>
+    <!-- event-section end -->
+
+{% endblock %} 

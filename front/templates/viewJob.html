@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header_block %}
+  <!-- header-bottom -->
+
+  <div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 column">
+                <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmtlogo-black.png" %}" alt=""></a></figure>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 menu-column">
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->      
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li ><a href="{% url 'front:index' %}">Home</a>
+                                </li>
+                                <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                <li class="current dropdown"><a href="#">Jobs</a>
+                                    <ul>
+                                        <li class="current"><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                        <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                    </ul>
+                                </li>
+                                                
+                                <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 clearfix column">
+                <ul class="nav-right pull-right">
+                   
+                    <a href="{% url 'admindashboard:userLogin' %}" target="_blank"><li class="donate-box"><button class="donate-box-btn">Admin Login</button></li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- header-bottom end -->
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 column">
+                        <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmt-logo.png" %}" alt=""></a></figure>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 menu-column">
+                        <div class="menu-area">
+                            <nav class="main-menu navbar-expand-lg">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->      
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li ><a href="{% url 'front:index' %}">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                        <li class="current dropdown"><a href="#">Jobs</a>
+                                            <ul>
+                                                <li  class="current"><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                                <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                            </ul>
+                                        </li>
+                                                        
+                                        <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- sticky-header end -->
+    </header>
+    <!-- End Main Header -->
+{% endblock %}
+
+
+{% block body_block %}
+<style>
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#aaa;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#ff4800;}
+.tg .tg-cji8{font-size:18px;border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-7jts{font-size:18px;border-color:inherit;text-align:center;vertical-align:top}
+.label {
+  color: white;
+  padding: 15px;
+  
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.info {background-color: #2196F3;} /* Blue */
+.warning {background-color: #ff9800;} /* Orange */
+.danger {background-color: #f44336;} /* Red */
+.other {background-color: #e7e7e7; color: black;} /* Gray */
+</style>
+<section class="page-title centred" style="padding: 0px 0px 10px 0px;">
+ 
+</section>
+
+<h1 style="text-align: center;" >Post: {{job.jobName}} ( Job ID: {{job.pk}} )</h1>
+
+<section >
+    
+<div class="welcome-wrap">
+        <div class="container">
+           
+                <table class="tg">
+                        <tr>
+                          <th class="tg-cji8" colspan="2">{{ job.jobName }}</th>
+                        </tr>
+                        <tr>
+                          <td class="tg-cji8"><span style="font-weight:bold;color:rgb(0, 0, 0)">Application Fee</span><br>General: Rs. {{ job.generalFee }}<br> OBC: Rs. {{ job.obcFee }} <br> SC/ST: Rs. {{ job.scstFee }}</td>
+                          <td class="tg-cji8" rowspan="2"><span style="font-weight:bold">Important Dates</span><br>Online Application Start: {{ job.startDate }}<br>Last date to Apply: {{ job.endDate }}</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-cji8"><span style="font-weight:bold">Payment Mode</span><br>Pay fee through Debit card, Credit card, Net Banking</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-cji8" colspan="2"><span style="font-weight:bold">Age Limit</span><br>Minimum Age: {{ job.minAge }} years<br>Maximum Age: {{ job.maxAge }} years</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-cji8" colspan="2"><span style="font-weight:bold">Eligibility Details</span><br>{{ job.qualification }}</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-7jts" colspan="2"><span style="font-weight:bold">Vacancy Details</span><br>
+                            <span style="color: #ff4800">Total Vacancy: {{ job.vacancy }} Posts</span>
+                            
+                        
+                            </td>
+                        </tr>
+                      </table>
+
+                <br><br>
+                <!-- {% now "Y-m-d" as todays_date %}
+                    {% if todays_date <= job.endDate|date:"Y-m-d" %}
+                    <span class="label success">Active</span>
+                    <a href="{% url 'jobs:applyJob' id=job.id %}"><button type="button" class="theme-btn">Apply now</button></a>
+                    {% else %}
+                    <span class="label danger">Expired</span>
+                    {% endif %} -->
+            
+        </div><!-- .container -->
+    </div><!-- .home-page-icon-boxes -->
+    </section>
+    <br>
+{% endblock %}

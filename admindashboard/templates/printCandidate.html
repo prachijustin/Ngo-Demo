@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-7z3s{font-weight:bold;border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-c9og{font-weight:bold;background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-9ikn{border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-55j3{font-weight:bold;font-size:100%;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-dvid{font-weight:bold;background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-qtvz{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:middle}
+.tg .tg-zs35{background-color:#efefef;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-2bev{border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-hkgo{font-weight:bold;border-color:#656565;text-align:left;vertical-align:top}
+.tg .tg-fymr{font-weight:bold;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+ 
+  #print-wrapper * {
+    visibility: visible;
+  }
+  .tg {
+    width: 100%;
+    height: 90vh;
+    border: solid;
+    table-layout: fixed;
+  }
+  
+}
+
+      </style>
+</head>
+<body  >
+    <div id="print-wrapper" style="width:800px; margin:0 auto;">
+        <div class="container" >   
+            <h1 style="text-align: center;">GMT CANDIDATE APPLICATION</h1>    
+            <table class="tg" >
+                <tr>
+                  <th class="tg-qtvz"><span style="font-weight:bold">Job Name:</span></th>
+                  <th class="tg-zs35">{{p.jobName}}</th>
+                  <th class="tg-qtvz"><span style="font-weight:bold">JobID: </span></th>
+                  <th class="tg-zs35">{{p.jobID}}</th>
+                </tr>
+                <tr>
+                  <td class="tg-y698" colspan="4"><span style="font-weight:bold">PERSONAL DETAILS</span></td>
+                </tr>
+                <tr>
+                  <td class="tg-9ikn"><span style="font-weight:bold">Application Number</span></td>
+                  <td class="tg-2bev" colspan="3">{{p.pk}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-9ikn"><span style="font-weight:bold">Candidate Name</span></td>
+                  <td class="tg-2bev" colspan="3">{{p.candidateFirstName}} {{p.candidateMiddleName}} {{p.candidateLastName}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-7z3s">Father/Husband Name</td>
+                  <td class="tg-2bev">{{p.fatherFirstName}} {{p.fatherMiddleName}} {{p.fatherLastName}}</td>
+                  <td class="tg-7z3s">Relation</td>
+                  <td class="tg-2bev">{{p.relativeType}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-7z3s">Date of Birth</td>
+                  <td class="tg-2bev">{{p.dob}}</td>
+                  <td class="tg-7z3s">Gender</td>
+                  <td class="tg-2bev">{{p.gender}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-hkgo">Email ID</td>
+                  <td class="tg-2bev">{{p.email}}</td>
+                  <td class="tg-hkgo">Mobile</td>
+                  <td class="tg-2bev">{{p.phone}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-55j3">Aadhaar Card</td>
+                  <td class="tg-2bev">{{p.aadhaar}}</td>
+                  <td class="tg-hkgo">Caste</td>
+                  <td class="tg-2bev">{{p.caste}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-c9og" colspan="4">ADDRESS DETAILS</td>
+                </tr>
+                <tr>
+                  <td class="tg-hkgo">Correspondence</td>
+                  <td class="tg-2bev"></td>
+                  <td class="tg-hkgo">Permanent</td>
+                  <td class="tg-2bev"></td>
+                </tr>
+                <tr>
+                  <td class="tg-hkgo">House No.</td>
+                  <td class="tg-2bev">{{p.addr1}}</td>
+                  <td class="tg-hkgo">House No.</td>
+                  <td class="tg-2bev">{{p.addr2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-hkgo">Village Name</td>
+                  <td class="tg-2bev">{{p.village1}}</td>
+                  <td class="tg-hkgo">Village Name</td>
+                  <td class="tg-2bev">{{p.village2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-hkgo">Post Office</td>
+                  <td class="tg-2bev">{{p.post1}}</td>
+                  <td class="tg-hkgo">Post Office</td>
+                  <td class="tg-2bev">{{p.post2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">Panchayat</td>
+                  <td class="tg-0pky">{{p.panchayat1}}</td>
+                  <td class="tg-fymr">Panchayat</td>
+                  <td class="tg-0pky">{{p.panchayat2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">Ward</td>
+                  <td class="tg-0pky">{{p.ward1}}</td>
+                  <td class="tg-fymr">Ward</td>
+                  <td class="tg-0pky">{{p.ward2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">Block</td>
+                  <td class="tg-0pky">{{p.block1}}</td>
+                  <td class="tg-fymr">Block</td>
+                  <td class="tg-0pky">{{p.block2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">District</td>
+                  <td class="tg-0pky">{{p.district1}}</td>
+                  <td class="tg-fymr">District</td>
+                  <td class="tg-0pky">{{p.district2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">City</td>
+                  <td class="tg-0pky">{{p.city1}}</td>
+                  <td class="tg-fymr">City</td>
+                  <td class="tg-0pky">{{p.city2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">PIN</td>
+                  <td class="tg-0pky">{{p.pin1}}</td>
+                  <td class="tg-fymr">PIN</td>
+                  <td class="tg-0pky">{{p.pin2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-dvid" colspan="4">QUALIFICATION DETAILS</td>
+                </tr>
+                <tr>
+                  <td class="tg-0pky"><span style="font-weight:bold">Qualification</span></td>
+                  <td class="tg-0pky" colspan="3">{{p.qualification}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">Details</td>
+                  <td class="tg-7btt" colspan="2">Board</td>
+                  <td class="tg-7btt">Percentage</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">10th</td>
+                  <td class="tg-0pky" colspan="2">{{p.board1}}</td>
+                  <td class="tg-0pky">{{p.percentage1}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">12th</td>
+                  <td class="tg-0pky" colspan="2">{{p.board2}}</td>
+                  <td class="tg-0pky">{{p.percentage2}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-fymr">Graduation</td>
+                  <td class="tg-0pky" colspan="2">{{p.board3}}</td>
+                  <td class="tg-0pky">{{p.percentage3}}</td>
+                </tr>
+                <tr>
+                  <td class="tg-y698" colspan="4"><span style="font-weight:bold">UPLOADS</span></td>
+                </tr>
+                <tr>
+                  <td class="tg-7btt" colspan="2">Picture</td>
+                  <td class="tg-7btt">Signature in Hindi</td>
+                  <td class="tg-7btt">Signature in English</td>
+                </tr>
+                <tr>
+                  <td class="tg-7btt" colspan="2"><img id="picR" src="{{p.pic.url}}" height="120" width="120" /></td>
+                  <td class="tg-7btt"><img id="signhinR" src="{{p.signhin.url}}" height="120" width="120" /></td>
+                  <td class="tg-7btt"><img id="signengR" src="{{p.signeng.url}}" height="120" width="120" /></td>
+                </tr>
+              </table> 
+              
+              
+            
+        </div> 
+    </div>
+</body>
+<script type="text/javascript">
+  window.print()
+</script>
+</html>

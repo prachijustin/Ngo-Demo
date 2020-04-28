@@ -1,0 +1,74 @@
+{% extends "dashbase.html" %}
+{% block body_block %}
+{% load staticfiles %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Mailbox
+           
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Mailbox</li>
+          </ol>
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+         
+            <div class="col-md-12 ">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Compose New Message</h3>
+                </div>
+                <!-- /.box-header -->
+                <form role="form" method="POST" action="{% url 'admindashboard:sendNewMail' %}" enctype="multipart/form-data" >
+                  {% csrf_token %}
+                <div class="box-body">
+                  <div class="form-group">
+                        <label>To:</label> <input class="form-control" placeholder="To:" name="tomail" >
+                  </div>
+                  <div class="form-group">
+                    <label>Subject:</label><input class="form-control" placeholder="Subject:" name="subject">
+                  </div>
+                  <div class="form-group">
+                        <textarea id="compose-textarea" class="form-control" name="msg" style="height: 300px">
+                         
+                        </textarea>
+                  </div>
+                
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <div class="pull-right">
+                
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                  </div>
+                  <a href="{% url 'admindashboard:prepareNewMail' %}"><button type="button" class="btn btn-default"><i class="fa fa-times"></i> Discard</button></a>
+                </div>
+                <!-- /.box-footer -->
+                </form>
+              </div>
+              <!-- /. box -->
+            </div>
+            <!-- /.col -->
+            {% if code != "SUCCESS" %}
+                  <div class="alert alert-success alert-dismissible" style="display: none;">
+                {% else %}
+                    <div class="alert alert-success alert-dismissible" style="display: block;">
+                {% endif %}
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> {{ re }}</h4>    
+                    </div>
+                  </div>
+          </div>
+          <!-- /.row -->
+        </section>
+        <!-- /.content -->
+      </div>
+{% endblock %}  
+
+  

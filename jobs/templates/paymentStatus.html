@@ -1,0 +1,164 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GMTRealTech Payment Status</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="icon" href="{% static "images/Favicon.png" %}" type="image/x-icon">
+
+<style type="text/css">
+    body {
+		font-family: 'Varela Round', sans-serif;
+	}
+	.modal-confirm {		
+		color: #636363;
+		width: 80%;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;   
+        position: relative;
+	}
+	.modal-confirm h1 {
+		text-align: center;
+		font-size: 50px;
+		margin: 30px 0 -15px;
+	}
+    .modal-confirm h2 {
+		text-align: center;
+	
+	}
+    .modal-confirm h3 {
+		text-align: center;
+	
+	}
+    
+	.modal-confirm .form-control, .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}	
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;
+		border-radius: 5px;
+		font-size: 13px;
+	}	
+	.modal-confirm .icon-box {
+		color: #fff;		
+		position: absolute;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: -70px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #82ce34;
+		padding: 15px;
+		text-align: center;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.modal-confirm .icon-box i {
+		font-size: 58px;
+		position: relative;
+		top: 3px;
+	}
+	.modal-confirm.modal-dialog {
+		margin-top: 80px;
+	}
+   
+    .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:15px 14px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:15px 14px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg .tg-cqfb{font-size:16px;text-align:left;vertical-align:middle}
+.tg .tg-5qw1{font-weight:bold;font-size:18px;font-family:Arial, Helvetica, sans-serif !important;;text-align:left;vertical-align:middle}
+
+</style>
+</head>
+<body>
+{% if response.RESPCODE == '01' %}
+<div>
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>				
+				<h1 class="modal-title">THANK YOU!</h1>	
+			</div>
+			<div class="modal-body">
+                <h2>Your Payment is Successful.</h2>
+                <h2>Payment status regarding your order ID: {{response.ORDERID}}</h2>
+                <br>
+                <table class="tg" style="margin: 0px auto;">
+                        <tr>
+                          <th class="tg-5qw1">ORDER ID</th>
+                          <th class="tg-cqfb">{{response.ORDERID}}</th>
+                        </tr>
+                        <tr>
+                          <td class="tg-5qw1">TRANSACTION ID</td>
+                          <td class="tg-cly1">{{response.TXNID}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-5qw1">TRANSACTION AMOUNT</td>
+                          <td class="tg-cly1">₹ {{response.TXNAMOUNT}}</td>
+                        </tr>
+                        <tr>
+                          <td class="tg-5qw1">TRANSACTION DATE &amp; TIME</td>
+                          <td class="tg-cly1">{{response.TXNDATE}}</td>
+                        </tr>
+                      </table>
+			</div>
+			
+            <hr style="width:50%;height:3px;border:none;color:#82ce34;background-color:#82ce34;" >
+            <div class="modal-footer">
+                    <!-- <p class="text-center">A copy of the transaction has been sent to your registered email ID as well.</p>   -->
+            </div>
+		</div>
+	</div>
+</div>
+{% else %}
+<div>
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box" style="background-color: #E83B2C;">
+                        <i class="material-icons">&#xe5cd;</i>
+                    </div>				
+                    <h1 class="modal-title">SORRY!</h1>	
+                </div>
+                <div class="modal-body">
+                    <h2>Your Payment is Not Able to Complete.</h2>
+                    <h2>Payment status regarding your order ID: {{response.ORDERID}}</h2>
+                    <br>
+                    <h3>Reason: {{response.RESPMSG}}</h3>
+                </div>
+                
+                <hr style="width:50%;height:3px;border:none;color:#E83B2C;background-color:#E83B2C;" >
+              
+            </div>
+        </div>
+    </div>
+{% endif%}     
+</body>
+</html>                                                        

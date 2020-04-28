@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .label {
+              color: white;
+              padding: 8px;
+              font-family: Arial;
+            }
+            .success {background-color: #4CAF50;} /* Green */
+            .info {background-color: #2196F3;} /* Blue */
+            .warning {background-color: #ff9800;} /* Orange */
+            .danger {background-color: #f44336;} /* Red */ 
+            .other {background-color: #e7e7e7; color: black;} /* Gray */ 
+            </style>
+</head>
+<body >
+    all jobs here..
+    Job 1-----> 
+    {% for p in object_list %}
+    <div class="cause-content-wrap">
+            <header class="entry-header d-flex flex-wrap align-items-center">
+                 
+                <h4 class="entry-title w-100 m-0">{{ p.jobName }}</h4>
+                
+            </header><!-- .entry-header -->
+
+            <div class="fund-raised w-100">
+               
+
+                <div class="fund-raised-details d-flex flex-wrap justify-content-between align-items-center">
+                    <div class="fund-raised-total mt-4">
+                        <p><b style="color: red">Expires On: </b><b>{{ p.endDate }}</b></p>
+                    </div>
+                    <a href="{{ p.get_absolute_url }}" class="btn gradient-bg mr-2" target="_blank">View info</a>    
+                    <input type="text" class="endDate" name="variable" value="{{ status }}">
+                 
+                    {% now "Y-m-d" as todays_date %}
+                    {% if todays_date <= p.endDate|date:"Y-m-d" %}
+                    <span class="label success">Active</span>
+                    {% else %}
+                    <span class="label danger">Expired</span>
+                    {% endif %}
+                </div><!-- .fund-raised-details -->
+            </div><!-- .fund-raised -->
+        </div><!-- .cause-content-wrap -->
+        
+    {% endfor %}
+   
+</body>
+
+
+</html>

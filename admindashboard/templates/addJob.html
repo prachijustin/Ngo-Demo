@@ -1,0 +1,225 @@
+{% extends "dashbase.html" %}
+{% block body_block %}
+{% load staticfiles %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+     
+      {% if not job_form.instance.pk %}
+        <h1>Add New Job</h1>
+        {% else %}
+        <h1>Edit Job</h1>
+        {% endif %}
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Jobs</li>
+        <li class="active">Add Job</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+            {% if  not job_form.errors %}
+            <div class="alert alert-danger alert-dismissible" style="display: none;">
+          {% else %}
+              <div class="alert alert-danger alert-dismissible" style="display: block;">
+          {% endif %}
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                  <ol>{{ job_form.job_name.errors }}</ol>
+                  <ol>{{ job_form.start_date.errors }}</ol>
+                  <ol>{{ job_form.end_date.errors }}</ol>
+                  <ol>{{ job_form.min_age.errors }}</ol>
+                  <ol>{{ job_form.max_age.errors }}</ol>
+                  <ol>{{ job_form.eligibility.errors }}</ol>
+                  <ol>{{ job_form.vacancy.errors }}</ol>
+                  <ol>{{ job_form.general_fee.errors }}</ol>
+                  <ol>{{ job_form.obc_fee.errors }}</ol>
+                  <ol>{{ job_form.scst_fee.errors }}</ol>
+            </div>
+            <div class="box">
+                <form role="form" method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                <div class="col-md-12">
+                    {{ job_form.jobName.errors }}
+                    <div class="box box-info">
+                      <div class="box-header">
+                        <h3 class="box-title">Input masks</h3>
+                      </div>
+                      <div class="box-body">
+                
+                        <div class="col-xs-12 form-group">
+                          <label>Job Name:</label>
+          
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class=" fa fa-pencil-square-o"></i>
+                            </div>
+                            <!-- <input type="text" class="form-control" name="jobName" placeholder="Job Name" required> -->
+                            {{ job_form.jobName }}
+                          </div>
+                   
+                        </div>
+                        <div class="col-xs-6 form-group">
+                            <label>Start Date:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <!-- <input type="date" class="form-control" name="startDate" required> -->
+                              {{ job_form.startDate }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-6 form-group">
+                            <label>End Date:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <!-- <input type="date" class="form-control" name="endDate" required> -->
+                              {{ job_form.endDate }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-6 form-group">
+                            <label>Minimum Age:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-child"></i>
+                              </div>
+                              <!-- <input type="number" class="form-control" name="minAge" placeholder="Minimum Age" required> -->
+                              {{ job_form.minAge }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-6 form-group">
+                            <label>Maximum Age:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-child"></i>
+                              </div>
+                              <!-- <input type="number" class="form-control" name="maxAge" placeholder="Maximum Age" required> -->
+                              {{ job_form.maxAge }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-6 form-group">
+                            <label>Total Number of Vacancy:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-list-ol"></i>
+                              </div>
+                              <!-- <input type="number" class="form-control" name="vacancy" placeholder="Number of Vacancies" required> -->
+                              {{ job_form.vacancy }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-6 form-group">
+                            <label>Maximum Qualification Details:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-graduation-cap"></i>
+                              </div>
+                              <!-- <select id="edu" name="qualification" class="form-control" required>
+                                <option selected disabled>-- Select --</option>
+                                <option value="Graduated">Graduated</option>
+                                <option value="12th">12th</option>
+                                <option value="10th">10th</option>
+                              </select> -->
+                              {{ job_form.qualification }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-4 form-group">
+                            <label>General Fee:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-inr"></i>
+                              </div>
+                              <!-- <input type="text" class="form-control" name="generalFee" placeholder="In Rs." required> -->
+                              {{ job_form.generalFee }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-4 form-group">
+                            <label>OBC Fee:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-inr"></i>
+                              </div>
+                              <!-- <input type="text" class="form-control" name="obcFee" placeholder="In Rs."  required> -->
+                              {{ job_form.obcFee }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-4 form-group">
+                            <label>SC/ST Fee:</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-inr"></i>
+                              </div>
+                              <!-- <input type="text" class="form-control" name="scstFee" placeholder="In Rs." required> -->
+                              {{ job_form.scstFee }}
+                            </div>
+                     
+                          </div>
+                          <div class="col-xs-4 form-group">
+                            <label>Payment (Honoratium in Rs.):</label>
+            
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-inr"></i>
+                              </div>
+                              <!-- <input type="text" class="form-control" name="scstFee" placeholder="In Rs." required> -->
+                              {{ job_form.payment }}
+                            </div>
+                     
+                          </div>
+                     
+                      </div>
+                      <br><br>
+                      {% if not job_form.instance.pk %}
+                        <button type="submit" style="padding: 10px 50px; font-size: 20px;" class="btn btn-primary btn-block ">ADD THE JOB</button>
+                      {% else %}
+                      <button type="submit" style="padding: 10px 50px; font-size: 20px;" class="btn btn-primary btn-block ">SAVE THE JOB</button>
+
+                      {% endif %}
+                    </div>
+
+                  </div>
+                  </form>
+                  {% if code != "SUCCESS" %}
+                  <div class="alert alert-success alert-dismissible" style="display: none;">
+                {% else %}
+                    <div class="alert alert-success alert-dismissible" style="display: block;">
+                {% endif %}
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> {{ msg }}</h4>    
+                    </div>
+                  </div>
+                  
+        </section>
+ 
+        <section class="col-lg-5 connectedSortable">
+
+        </section>
+        <!-- right col -->
+      </div>
+
+      
+{% endblock %}  
+
+  

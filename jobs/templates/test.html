@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-1">
+        <input type="text" class="endDate" name="variable" value="2019-11-29">
+        <span class="check"></span>
+        <br>
+        </div>
+        <div class="container-2">
+        <input type="text" class="endDate" name="variable" value="2019-11-24">
+        <span class="check"></span>
+        <br>
+        </div>
+</body>
+<script type="text/javascript">       
+    const endDates = document.querySelectorAll('.endDate');
+ const checks = document.querySelectorAll('.check');
+ console.log(endDates)
+ let ToDate = new Date();
+ let i = 0;
+ for (const endDate of endDates){
+     if(new Date(endDate.value).getTime()<=ToDate){
+       checks[i].innerHTML = "Expired";
+       checks[i].className = "label danger";
+     }
+     else{
+       checks[i].innerHTML = "Active";
+       checks[i].className = "label";
+     }
+     i++;
+ }
+ </script>
+</html>
+
+
+//     var cfnameA = $('cfnameA').val();
+//     var clnameA = $('cfnameA').val(); 
+//     var relA = $('cfnameA').val();
+//     var ffnameA = $('cfnameA').val();
+//     var flnameA = $('cfnameA').val();
+//     var genA = $('cfnameA').val();
+//     var phoneA = $('cfnameA').val();
+//     var aadhaarA = $('cfnameA').val();
+//     var casteA = $('cfnameA').val();
+//     var addr1 = $('cfnameA').val();
+//     var addr2 = $('cfnameA').val();
+//     var village1A = $('cfnameA').val();
+//     var village1A = $('cfnameA').val();
+//     var post1A = $('cfnameA').val();
+//     var post2A = $('cfnameA').val();
+//     var panchayat1A = $('cfnameA').val();
+//     var panchayat2A = $('cfnameA').val();
+//     var ward1A = $('cfnameA').val();
+//     var ward2A = $('cfnameA').val();
+//     var block1A = $('cfnameA').val();
+//     var block2A = $('cfnameA').val();
+//     var district1A = $('cfnameA').val();
+//     var district2A = $('cfnameA').val();
+//     var city1A = $('cfnameA').val();
+//     var city2A = $('cfnameA').val();
+//     var pin1A = $('cfnameA').val();
+//     var pin2A = $('cfnameA').val();
+//     var qualA = $('cfnameA').val();
+//     var picA = $('cfnameA').val();
+//     var signhinA = $('cfnameA').val();
+//     var signengA = $('cfnameA').val();
+//     var castecertA = $('cfnameA').val();
+//     var emailA = $('#emailA').val();
+//     var dobA = $('#dobA').val();
+//     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//     var emailFormat = regex.test(email);
+  
+//     if(email == '')
+//       {
+//           alert('Please enter your email');
+//           $('#emailA').focus(); 
+//           document.getElementById('fillForm').style.display = 'block';
+//           document.getElementById('reviewForm').style.display = 'none';
+//           document.getElementById('paymentForm').style.display = 'none';
+//           document.getElementById('finalForm').style.display = 'none';
+//       }
+//       else if(!emailFormat){
+//           alert('Please enter email in valid format');
+//           $('#emailA').focus(); 
+//           document.getElementById('fillForm').style.display = 'block';
+//           document.getElementById('reviewForm').style.display = 'none';
+//           document.getElementById('paymentForm').style.display = 'none';
+//           document.getElementById('finalForm').style.display = 'none';
+//       }
+//       else if(dob == '')
+//       {
+//           alert('please dob')
+//           $('#dobA').focus(); 
+//           document.getElementById('fillForm').style.display = 'block';
+//           document.getElementById('reviewForm').style.display = 'none';
+//           document.getElementById('paymentForm').style.display = 'none';
+//           document.getElementById('finalForm').style.display = 'none';
+//       }
+//       else{
+//           document.getElementById('fillForm').style.display = 'none';
+//           document.getElementById('reviewForm').style.display = 'block';
+//           document.getElementById('paymentForm').style.display = 'none';
+//           document.getElementById('finalForm').style.display = 'none';  
+//       }

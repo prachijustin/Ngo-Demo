@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header_block %}
+  <!-- header-bottom -->
+  
+  <div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 column">
+                <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmtlogo-black.png" %}" alt=""></a></figure>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 menu-column">
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->      
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li ><a href="{% url 'front:index' %}">Home</a>
+                                </li>
+                                <li class="current"><a href="{% url 'front:about' %}">About Us</a></li>
+                                <li class="dropdown"><a href="#">Jobs</a>
+                                    <ul>
+                                        <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                        <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                    </ul>
+                                </li>
+                                                
+                                <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 clearfix column">
+                <ul class="nav-right pull-right">
+                   
+                    <a href="{% url 'admindashboard:userLogin' %}" target="_blank"><li class="donate-box"><button class="donate-box-btn">Admin Login</button></li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- header-bottom end -->
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 column">
+                        <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmt-logo.png" %}" alt=""></a></figure>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 menu-column">
+                        <div class="menu-area">
+                            <nav class="main-menu navbar-expand-lg">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->      
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li ><a href="{% url 'front:index' %}">Home</a>
+                                        </li>
+                                        <li class="current"><a href="{% url 'front:about' %}">About Us</a></li>
+                                        <li class="dropdown"><a href="#">Jobs</a>
+                                            <ul>
+                                                <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                                <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                            </ul>
+                                        </li>
+                                                        
+                                        <li><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- sticky-header end -->
+    </header>
+    <!-- End Main Header -->
+{% endblock %}
+
+
+{% block body_block %}
+
+    <!-- page-title -->
+    <section class="page-title centred" style="background-image: url({% static "images/background/AboutUsGMT.png" %});">
+        <div class="container">
+            <div class="content-box">
+                <div class="title">About Us</div>
+                <ul class="bread-crumb">
+                    <li><a href="{% url 'front:index' %}">Home</a></li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- page-title end -->
+
+
+    <!-- about-style-two -->
+    <section class="about-style-two sec-pad">
+        <div class="container">
+            <div class="sec-title centred">We Aim to Provide <span>Employment to All People</span> in the state of Bihar</div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 about-column">
+                    <div class="about-content">
+                        <div class="top-content">
+                            <div class="title">About GMT RealTech</div>
+                            <div class="text">GMT Realtech NGO is a company which is determined to
+                                reduce the rate of rising unemployment in the state of Bihar, India. 
+                                <br>
+                                The NGO, at the same time, is trying to fully implement the "Nal Jal Yojana"
+                                in the state so that the people in the state of Bihar get more employed.
+                                <br>
+                                Also, in order to achieve maximum success in this scheme, the "Nal Jal Yojana"
+                                is working on all the divisions and levels of the state, being it a Ward level, Panchayat Level,
+                                Block Level or District Level.
+                                <br>
+                                To make this successful and to provide this opportunity to the people of evry corner
+                                of the state, we, at GMT Realtech NGO are providing jobs online.
+                                <br>
+                                Candidates, willing to do job, can filter out the jobs according to Job Position, their 
+                                Qualification and Age and then apply accordingly.
+
+                                The applications received are then shortlisted based on the merit score of the candidate.
+                                <br><br>
+                                GMT Realtech NGO aims to provide jobs to maximum number of people and thus helping
+                                in reducing the unemployment rate of Bihar.
+
+                            </div>
+                            
+                            <div class="link"><a href="{% url 'front:currentjobs' %}" class="theme-btn">Get Started</a></div>
+                        </div>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 img-column">
+                    <figure class="img-box"><img src="{% static "images/resource/abtGMT.png" %}" alt=""></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-style-two -->
+
+
+    <!-- fact-counter -->
+    <section class="counter-style-two counter-style-three overlay-bg" style="background-image: url(images/background/counter.jpg);">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 counter-column">
+                    <div class="single-item">
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{joblen}}">0</span></div>
+                        </article>
+                        <div class="text">Job(s) Added</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 counter-column">
+                    <div class="single-item">
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{candlen}}">0</span></div>
+                        </article>
+                        <div class="text">Candidate(s) Applied</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 counter-column">
+                    <div class="single-item">
+                        <article class="column wow fadeIn" data-wow-duration="0ms">
+                        <div class="count-outer"><span class="count-text" data-speed="1000" data-stop="{{querlen}}">0</span></div>
+                        </article>
+                        <div class="text">People Queries Reached</div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <!-- fact-counter end -->
+
+
+   
+
+{% endblock %} 

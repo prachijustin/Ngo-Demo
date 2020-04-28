@@ -1,0 +1,328 @@
+     <div class="row">
+                              <div class="col-xs-6 form-group">
+                                <label for="jobNameA">Job Name</label>
+                                <input type="text" class="form-control" name="jobName" id="jobNameA" value="{{ jobName }}" readonly>
+                              </div>
+                              <div class="col-xs-6 form-group">
+                                <label for="jobIDA">Job ID</label>
+                                <input type="text" class="form-control" name="jobID" id="jobIDA" value="{{ id }}" readonly>
+                              </div>
+                              
+                            </div>
+
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">PERSONAL DETAILS</legend>
+                            
+                                <div class="row">
+                                    
+                                    <div class="col-xs-4 form-group">
+                                        <label>* Candidate's First Name (Don't write Mr./Ms./Mrs.)</label>        
+                                        <input class="form-control" type="text" name="candidateFirstName" id="cfnameA" placeholder="First Name" required/>
+                                    </div>
+                                    <div class="col-xs-4 form-group">
+                                            <label>Candidate's Middle Name</label>
+                                        <input class="form-control" type="text" name="candidateMiddleName" id="cmnameA" placeholder="Middle Name"/>
+                                    </div>
+                                    
+                                 <div class="col-xs-4 form-group">
+                                         <label>* Candidate's Last Name</label>
+                                     <input class="form-control" type="text" name="candidateLastName" id="clnameA" placeholder="Last Name" required/>
+                                 </div>
+                                 <div class="col-xs-2 form-group">
+                                     <label>* Father/Husband</label>
+                                     <select class="form-control" name="relative" id="relA" required>
+                                         <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                         <option value="Father">Father</option>
+                                         <option value="Husband">Husband</option>
+                                 </select>
+                                 </div>
+                                 <div class="col-xs-4 form-group">
+                                           <label>* Father/Husband First Name (Don't write Mr.)</label>
+                                           
+                                           <input class="form-control" type="text" name="fatherFirstName" id="ffnameA" placeholder="First Name" required/>
+                                       </div>
+                                       <div class="col-xs-3 form-group">
+                                               <label>Father/Husband Middle Name</label>
+                                           <input class="form-control" type="text" name="fatherMiddleName" id="fmnameA" placeholder="Middle Name"/>
+                                       </div>
+                                       
+                                   <div class="col-xs-3 form-group">
+                                           <label>* Father/Husband Last Name</label>
+                                       <input class="form-control" type="text" name="fatherLastName" id="flnameA" placeholder="Last Name" required/>
+                                   </div>
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Date of Birth</label>
+                                        <input class="form-control" type="date" name="dob" id="dobA" required/>
+                                    </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Gender</label>
+                                        <select class="form-control" name="gender" id="genA" required>
+                                                <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Others">Others</option>
+                                        </select>
+                                      
+                                    </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Email ID </label>
+                                        <input class="form-control" type="email" name="email" id="emailA" placeholder="Email ID" required/>
+                                    </div>
+                                    <div class="col-xs-6 form-group">
+                                        <label>* Mobile Number</label>
+                                        <input class="form-control" type="text" name="phone" id="phoneA"  placeholder="Phone Number" id="phone" required/>
+                                     </div>
+                     
+                                    <div class="col-xs-6 form-group">
+                                            <label>* Aadhaar Card Number</label>
+                                            <input class="form-control" type="text" name="aadhaar" id="aadhaarA" placeholder="Adhaar Card Number" required/>
+                                    </div>
+                                    <div class="col-xs-6 form-group">
+                                       <label>* Caste (Must have valid caste certificate. If not, select General) </label>
+                                       <select class="form-control" name="caste" id="casteA" required>
+                                           <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                           <option value="General">General</option>
+                                           <option value="OBC">OBC</option>
+                                           <option value="SC">SC</option>
+                                           <option value="ST">ST</option>
+                                   </select>
+                                   </div>
+                     
+                                </div>
+                        
+                        </fieldset>
+                     
+                        <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">ADDRESS DETAILS</legend>
+                            
+                                     
+                                            <div class="row">
+                                                
+                                                <div class="col-xs-6 form-group">
+                                                    <label>* Correspondence Address</label>
+                                                    
+                                                    <!-- <input class="form-control" type="text" placeholder="First Name"/> -->
+                                                    <textarea class="form-control" rows="3" placeholder="House No." id="addr1A" name="addr1" required></textarea>
+                                                </div>
+                                                <div class="col-xs-6 form-group">
+                                                        <label>* Permanent Address</label>
+                                                
+                                                    <textarea class="form-control" rows="3" placeholder="House No." id="addr2A" name="addr2" required></textarea>
+                                                </div>
+                                                <div class="col-xs-6 form-group">            
+                                                 <input class="form-control" type="text" placeholder="Village Name" id="village1A" name="village1" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">                    
+                                                     <input class="form-control" type="text" placeholder="Village Name" id="village2A" name="village2" required/>
+                                                 </div>
+                                                <div class="col-xs-6 form-group">            
+                                                 <input class="form-control" type="text" placeholder="Post Office" id="post1A" name="post1" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">                    
+                                                     <input class="form-control" type="text" placeholder="Post Office" id="post2A" name="post2" required/>
+                                                 </div>
+                                                 <div class="col-xs-6 form-group">            
+                                                     <input class="form-control" type="text" placeholder="Panchayat" id="panchayat1A" name="panchayat1" required/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">                    
+                                                         <input class="form-control" type="text" placeholder="Panchayat" id="panchayat2A" name="panchayat2" required/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">            
+                                                         <input class="form-control" type="text" placeholder="Ward" id="ward1A" name="ward1" required/>
+                                                         </div>
+                                                         <div class="col-xs-6 form-group">                    
+                                                             <input class="form-control" type="text" placeholder="Ward" id="ward2A" name="ward2" required/>
+                                                         </div>
+                                                         <div class="col-xs-6 form-group">            
+                                                             <input class="form-control" type="text" placeholder="Block" id="block1A" name="block1" required/>
+                                                             </div>
+                                                             <div class="col-xs-6 form-group">                    
+                                                                 <input class="form-control" type="text" placeholder="Block" id="block2A" name="block2" required/>
+                                                             </div>
+                                                             
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="District" id="district1A" name="district1" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="District" id="district2A" name="district2" required/>
+                                                    </div>
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                    <input class="form-control" type="text" placeholder="City" name="city1" id="city1A" required/>
+                                                </div>
+                                                <div class="col-xs-6 form-group">
+                                                
+                                                    <input class="form-control" type="text" placeholder="City" name="city2" id="city2A" required/>
+                                                </div>
+                                
+                                              
+                                                <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="PIN Code(6 digits)" pattern="[0-9]+" name="pin1" id="pin1A" maxlength="6" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                        <input class="form-control" type="text" placeholder="PIN Code(6 digits)" pattern="[0-9]+" name="pin2" id="pin2A" maxlength="6" required/>
+                                                    </div>
+                                                    <div class="col-xs-6 form-group">
+                                                    
+                                                         <input class="form-control" type="text"  value="Bihar" readonly/>
+                                                     </div>
+                                                     <div class="col-xs-6 form-group">
+                                                     
+                                                         <input class="form-control" type="text" Value="Bihar" readonly/>
+                                                     </div>
+                                
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="filladdress">
+                                                    <label class="custom-control-label" for="filladdress">Permanent Same As Correspondence</label>
+                                                  </div>
+                                        
+                                        
+                        </fieldset>
+                        
+                        <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">QUALIFICATION DETAILS</legend>
+                            
+                                    
+                                        
+                                        <div class="form-group row">
+                                            <label for="ii" class="col-sm-2 col-form-label">* Last Education Qualification</label>
+                                            <div class="col-sm-8">
+                                                    <!-- <input class="form-control" type="text" placeholder="edu" name="edu" /> -->
+                     
+                                            <select id="qualification" name="qualification" class="form-control" required>
+                                                    <option selected="selected" disabled="disabled" value="">-- Select --</option>
+                                                    <option value="Graduated">Graduated</option>
+                                                    <option value="High School">12th</option>
+                                                    <option value="10th">10th</option>
+                                                  </select>
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                        <div class="row">
+                                                <div class="col-xs-12 form-group">
+                                                <label>* Education Qualification Details (Leave blank if not available)</label>
+                                                    <table class="tg">
+                                                            <tr>
+                                                              <th class="tg-yla0">S.R.No.</th>
+                                                              <th class="tg-yla0">NAME OF EXAM</th>
+                                                              <th class="tg-yla0">BOARD/UNIVERSITY</th>
+                                                              <th class="tg-yla0">MAX MARKS</th>
+                                                              <th class="tg-yla0">OBTAINED MARKS</th>
+                                                              <th class="tg-yla0">PERCENTAGE</th>
+                                                            </tr>
+                                                            <tr>
+                                                              <td class="tg-0lax">
+                                                                <input  class="form-control" name="srno"  value="1" readonly>
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="text" class="form-control" name="exam1"  value="10th" readonly>
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="text" class="form-control" name="board1" id="board1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="number" class="form-control" name="max_marks1" id="max_marks1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input type="number" class="form-control" name="obt_marks1" id="obt_marks1">
+                                                              </td>
+                                                              <td class="tg-0lax">
+                                                                    <input class="form-control" name="percentage1" id="percentage1" readonly>
+                                                              </td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="tg-0lax">
+                                                                      <input class="form-control" name="srno" value="2" readonly>
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="text" class="form-control" name="exam2" value="12th" readonly >
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="text" class="form-control" name="board2" id="board2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="number" class="form-control" name="max_marks2" id="max_marks2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input type="number" class="form-control" name="obt_marks2" id="obt_marks2">
+                                                                    </td>
+                                                                    <td class="tg-0lax">
+                                                                          <input class="form-control" name="percentage2" id="percentage2" readonly>
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                        <td class="tg-0lax">
+                                                                          <input class="form-control" name="srno"  value="3" readonly>
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="text" class="form-control" name="exam3" value="Graduation" readonly>
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="text" class="form-control" name="board3" id="board3">
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="number" class="form-control" name="max_marks3" id="max_marks3" >
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input type="number" class="form-control" name="obt_marks3" id="obt_marks3">
+                                                                        </td>
+                                                                        <td class="tg-0lax">
+                                                                              <input class="form-control" name="percentage3" id="percentage3" readonly>
+                                                                        </td>
+                                                                      </tr>
+                                                                     
+                                                          </table>
+                                                          </div>
+                                    
+                                    </div>
+                            
+                            </fieldset>
+                     
+                            <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border">UPLOADS</legend>
+                                    
+                                            
+                                        <div class="row">
+                                                <div class="col-xs-4 form-group">
+                                                        <img id="pic" src="#" />
+                                                        <br>
+                                                        <label>Passport Size Picture</label>
+                                                        
+                                                        <input class="form-control" type="file" name="pic" id="picA" accept="image/*" onchange="readPIC(this);" required/>
+                                                    </div>
+                                            <div class="col-xs-4 form-group">
+                                                    <img id="signhin" src="#"/>
+                                                    <br>
+                                                <label>Signature in Hindi</label>
+                                                
+                                                <input class="form-control" type="file" name="signhin" id="signhinA" accept="image/*" onchange="readSIGNHIN(this);" required/>
+                                            </div>
+                                    
+                                            <div class="col-xs-4 form-group">
+                                                    <img id="signeng" src="#" />
+                                                    <br>
+                                                <label>Signature in English</label>
+                                                
+                                                <input class="form-control" type="file" name="signeng" id="signengA" accept="image/*" onchange="readSIGNENG(this);"required />
+                                            </div>
+                     
+                                           
+                                        </div>
+                                        <label>-- Images size should be less than 2 MB</label>
+                                        <br>
+                                        <label>-- Images should be clear.</label>
+                                        <br>
+                                        <label>-- Allowed Image format: .jpg/.jpeg/.png/.bmp</label>
+                                </fieldset>
+                                <div class="form-group">
+                                                <div class="g-recaptcha" data-sitekey="6LdDXcQUAAAAAOb-EiNPKcCACkwCbKD-VTGPeFqT"></div>
+                                                
+                                            </div>

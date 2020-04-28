@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block header_block %}
+  <!-- header-bottom -->
+  <div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 column">
+                <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmtlogo-black.png" %}" alt=""></a></figure>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 menu-column">
+                <div class="menu-area">
+                    <nav class="main-menu navbar-expand-lg">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->      
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li ><a href="{% url 'front:index' %}">Home</a>
+                                </li>
+                                <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                <li class="dropdown"><a href="#">Jobs</a>
+                                    <ul>
+                                        <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                        <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                    </ul>
+                                </li>
+                                                
+                                <li class="current"><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 clearfix column">
+                <ul class="nav-right pull-right">
+                   
+                    <a href="{% url 'admindashboard:userLogin' %}" target="_blank"><li class="donate-box"><button class="donate-box-btn">Admin Login</button></li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- header-bottom end -->
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 column">
+                        <figure class="logo-box"><a href="{% url 'front:index' %}"><img src="{% static "images/gmt-logo.png" %}" alt=""></a></figure>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 menu-column">
+                        <div class="menu-area">
+                            <nav class="main-menu navbar-expand-lg">
+                                <div class="navbar-header">
+                                    <!-- Toggle Button -->      
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li ><a href="{% url 'front:index' %}">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'front:about' %}">About Us</a></li>
+                                        <li class="dropdown"><a href="#">Jobs</a>
+                                            <ul>
+                                                <li><a href="{% url 'front:currentjobs' %}">Current Jobs</a></li>
+                                                <li><a href="{% url 'front:upcomingjobs' %}">Upcoming Jobs</a></li>
+                                            </ul>
+                                        </li>
+                                                        
+                                        <li class="current"><a href="{% url 'front:contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- sticky-header end -->
+    </header>
+    <!-- End Main Header -->
+{% endblock %}
+
+
+{% block body_block %}
+
+ <!-- page-title -->
+ <section class="page-title centred" style="background-image: url({% static "images/background/ContactGMT.png" %});">
+    <div class="container">
+        <div class="content-box">
+            <div class="title">Contact Us</div>
+            <ul class="bread-crumb">
+                <li><a href="{% url 'front:index' %}">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- page-title end -->
+   <!-- contact-section -->
+   <section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 contact-column">
+                <div class="contact-info">
+                    <div class="contact-title">Get In Touch</div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 column">
+                            <div class="left-column single-info centred">
+                                <div class="icon-box"><i class="flaticon-map"></i></div>
+                                <h5>Address</h5>
+                                <div class="text">test address</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 column">
+                            <div class="right-column single-info">
+                                <div class="icon-box"><i class="flaticon-mail"></i></div>
+                                <h5>Email</h5>
+                                <div class="text">test@test.com</div>
+                            </div>
+                            <!-- <div class="right-column single-info">
+                                <div class="icon-box"><i class="flaticon-phone-call-1"></i></div>
+                                <h5>Phone No</h5>
+                                <div class="text">+91-7762847958</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 contact-column">
+                <div class="contact-form-area">
+                    <div class="contact-title">Send Us A Message</div>
+                    <form role="form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <label>Name *</label>
+                                <input type="text" name="form_name" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                <label>Email *</label>
+                                <input type="email" name="form_email" required>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label>Subject</label>
+                                <input type="text" name="form_subject"  required>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label>Messsage *</label>
+                                <textarea name="form_message" required></textarea>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                               <button type="submit" class="theme-btn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% if code == 'SUCCESS' %}
+                <script type="text/javascript">
+                alert('Message sent successfully!')
+                </script>
+            {% else %}
+               
+            {% endif %}
+
+        </div>
+       
+    </div>
+</section>
+<!-- contact-section end -->
+
+
+
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1869.991294879448!2d85.1335698487741!3d25.58161998952003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2a78970f722cf%3A0x3ef457389e6c9185!2sBhupatipur%20Main%20Rd%2C%20Surbhi%20Vihar%2C%20Ramkrishan%20Nagar%2C%20Patna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1575443114154!5m2!1sen!2sin" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+
+{% endblock %}
+

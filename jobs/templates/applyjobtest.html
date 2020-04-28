@@ -1,0 +1,358 @@
+<form method="POST" enctype="multipart/form-data">
+   <div class="row">
+        
+         <div class="col-xs-6 form-group">
+           <label for="exampleInputName2">Job Name</label>
+            <input type="text"  class="form-control" value="{{ jobName }}" readonly>
+        </div>
+         <div class="col-xs-6 form-group">
+           <label for="exampleInputName2">Job ID</label>
+           <input type="text"  class="form-control" value="{{ id }}" readonly>
+        </div>
+         
+       </div>
+       
+   <fieldset class="scheduler-border">
+       <legend class="scheduler-border">PERSONAL DETAILS</legend>
+       <form method="POST" enctype="multipart/form-data">
+           <div class="row">
+               
+               <div class="col-xs-4 form-group">
+                    {{ candForm.candidateFirstName.errors }}
+                   <label>* Candidate's First Name (Don't write Mr./Ms./Mrs.)</label>        
+                    {{ candForm.candidateFirstName }}
+                </div>
+               <div class="col-xs-4 form-group">
+                    {{ candForm.candidateMiddleName.errors }}
+                       <label>Candidate's Middle Name</label>
+                       {{ candForm.candidateMiddleName }}
+                    </div>
+               
+            <div class="col-xs-4 form-group">
+                    {{ candForm.candidateLastName.errors }}
+                    <label>* Candidate's Last Name</label>
+                    {{ candForm.candidateLastName }}
+                </div>
+            <div class="col-xs-2 form-group">
+                <label>* Father/Husband</label>
+                {{ candForm.relativeType }}
+            </div>
+            <div class="col-xs-4 form-group">
+                      <label>* Father/Husband First Name (Don't write Mr.)</label>
+                        {{ candForm.fatherFirstName }}
+                  </div>
+                  <div class="col-xs-3 form-group">
+                          <label>Father/Husband Middle Name</label>
+                        {{ candForm.fatherMiddleName }}
+                        </div>
+                  
+              <div class="col-xs-3 form-group">
+                      <label>* Father/Husband Last Name</label>
+                        {{ candForm.fatherLastName }}
+                    </div>
+               <div class="col-xs-6 form-group">
+                   <label>* Date of Birth</label>
+                
+                   <input type="date"  class="form-control" name="dob" id="dob" >
+               </div>
+
+               <div class="col-xs-6 form-group">
+                   <label>* Gender</label>
+                    {{ candForm.gender }}
+
+               </div>
+
+               <div class="col-xs-6 form-group">
+                   <label>* Email ID</label>
+                    {{ candForm.email }}
+                </div>
+               <div class="col-xs-6 form-group">
+                   <label>* Mobile Number</label>
+                    {{ candForm.phone }}
+                </div>
+
+               <div class="col-xs-6 form-group">
+                       <label>* Aadhaar Card Number</label>
+                    {{ candForm.aadhaar }}
+                    </div>
+               <div class="col-xs-6 form-group">
+                  <label>* Caste (Must have valid caste certificate. If not, select General) </label>
+                    {{ candForm.caste }}
+              </div>
+
+           </div>
+   
+   </fieldset>
+
+   <fieldset class="scheduler-border">
+           <legend class="scheduler-border">ADDRESS DETAILS</legend>
+       
+                
+                       <div class="row">
+                           
+                           <div class="col-xs-6 form-group">
+                               <label>* Correspondence Address</label>
+                                {{ candForm.addr1 }}
+                           </div>
+                           <div class="col-xs-6 form-group">
+                                   <label>* Permanent Address</label>
+                                {{ candForm.addr2 }}
+                           </div>
+                           <div class="col-xs-6 form-group">            
+                                {{ candForm.village1 }}
+                        </div>
+                            <div class="col-xs-6 form-group">                    
+                                {{ candForm.village2 }}
+                            </div>
+                           <div class="col-xs-6 form-group">            
+                                {{ candForm.post1 }}
+                        </div>
+                            <div class="col-xs-6 form-group">                    
+                                {{ candForm.post2 }}
+                            </div>
+                            <div class="col-xs-6 form-group">            
+                                {{ candForm.panchayat1 }}
+                            </div>
+                                <div class="col-xs-6 form-group">                    
+                                    {{ candForm.panchayat2 }}
+                                </div>
+                                <div class="col-xs-6 form-group">            
+                                {{ candForm.ward1 }}
+                                </div>
+                                    <div class="col-xs-6 form-group">                    
+                                {{ candForm.ward2 }}
+                                    </div>
+                                    <div class="col-xs-6 form-group">            
+                                {{ candForm.block1 }}
+                                    </div>
+                                        <div class="col-xs-6 form-group">                    
+                                {{ candForm.block2 }}
+                                        </div>
+                                        
+                           <div class="col-xs-6 form-group">
+                                {{ candForm.district1 }}                               
+                               </div>
+                               <div class="col-xs-6 form-group">
+                                {{ candForm.district2 }}
+                               </div>
+                           <div class="col-xs-6 form-group">
+                                {{ candForm.city1 }}                               
+                           </div>
+                           <div class="col-xs-6 form-group">
+                                {{ candForm.city2 }}
+                           </div>
+           
+                         
+                           <div class="col-xs-6 form-group">
+                                {{ candForm.pin1 }}                               
+                               </div>
+                               <div class="col-xs-6 form-group">
+                            {{ candForm.pin2 }}
+                               </div>
+                               <div class="col-xs-6 form-group">
+                               
+                                    <input class="form-control" type="text"  value="Bihar" readonly/>
+                                </div>
+                                <div class="col-xs-6 form-group">
+                                
+                                    <input class="form-control" type="text" Value="Bihar" readonly/>
+                                </div>
+           
+                       </div>
+                       <div class="custom-control custom-checkbox">
+                               <input type="checkbox" class="custom-control-input" id="filladdress">
+                               <label class="custom-control-label" for="filladdress">Permanent Same As Correspondence</label>
+                             </div>
+                   
+                   
+   </fieldset>
+   
+   <fieldset class="scheduler-border">
+           <legend class="scheduler-border">QUALIFICATION DETAILS</legend>
+       
+               
+                   
+                   <div class="form-group row">
+                       <label for="ii" class="col-sm-2 col-form-label">* Last Education Qualification</label>
+                       <div class="col-sm-8">
+                        {{ candForm.qualification }}
+                       </div>
+                       
+                   </div>
+               
+                   <div class="row">
+                           <div class="col-xs-12 form-group">
+                           <label>* Education Qualification Details (Leave blank if not available)</label>
+                               <table class="tg">
+                                       <tr>
+                                         <th class="tg-yla0">S.R.No.</th>
+                                         <th class="tg-yla0">NAME OF EXAM</th>
+                                         <th class="tg-yla0">BOARD/UNIVERSITY</th>
+                                         <th class="tg-yla0">MAX MARKS</th>
+                                         <th class="tg-yla0">OBTAINED MARKS</th>
+                                         <th class="tg-yla0">PERCENTAGE</th>
+                                       </tr>
+                                       <tr>
+                                         <td class="tg-0lax">
+                                           <input  class="form-control" name="srno"  value="1" readonly>
+                                         </td>
+                                         <td class="tg-0lax">
+                                               <input type="text" class="form-control" name="exam1" value="10th" readonly>
+                                         </td>
+                                         <td class="tg-0lax">
+                                            {{ candForm.board1 }}
+                                         </td>
+                                         <td class="tg-0lax">
+                                               <input type="number" class="form-control" name="max_marks1" id="max_marks1" size="1">
+                                         </td>
+                                         <td class="tg-0lax">
+                                               <input type="number" class="form-control" name="obt_marks1" id="obt_marks1" size="1">
+                                         </td>
+                                         <td class="tg-0lax">
+                                               <input class="form-control" name="percentage1" id="percentage1" readonly>
+                                         </td>
+                                       </tr>
+                                       <tr>
+                                               <td class="tg-0lax">
+                                                 <input class="form-control" name="srno" value="2" readonly>
+                                               </td>
+                                               <td class="tg-0lax">
+                                                     <input type="text" class="form-control" name="exam2" value="12th" readonly >
+                                               </td>
+                                               <td class="tg-0lax">
+                                                     <input type="text" class="form-control" name="board2" size="3">
+                                               </td>
+                                               <td class="tg-0lax">
+                                                     <input type="number" class="form-control" name="max_marks2" id="max_marks2" size="1">
+                                               </td>
+                                               <td class="tg-0lax">
+                                                     <input type="number" class="form-control" name="obt_marks2" id="obt_marks2" size="1">
+                                               </td>
+                                               <td class="tg-0lax">
+                                                     <input class="form-control" name="percentage2" id="percentage2" readonly>
+                                               </td>
+                                             </tr>
+                                             <tr>
+                                                   <td class="tg-0lax">
+                                                     <input class="form-control" name="srno"  value="3" readonly>
+                                                   </td>
+                                                   <td class="tg-0lax">
+                                                         <input type="text" class="form-control" name="exam3" value="Graduation" readonly>
+                                                   </td>
+                                                   <td class="tg-0lax">
+                                                         <input type="text" class="form-control" name="board3" size="3">
+                                                   </td>
+                                                   <td class="tg-0lax">
+                                                         <input type="number" class="form-control" name="max_marks3" id="max_marks3" size="1">
+                                                   </td>
+                                                   <td class="tg-0lax">
+                                                         <input type="number" class="form-control" name="obt_marks3" id="obt_marks3" size="1">
+                                                   </td>
+                                                   <td class="tg-0lax">
+                                                         <input class="form-control" name="percentage3" id="percentage3" readonly>
+                                                   </td>
+                                                 </tr>
+                                                
+                                     </table>
+                                     </div>
+               
+               </div>
+       
+       </fieldset>
+
+       <fieldset class="scheduler-border">
+               <legend class="scheduler-border">UPLOADS</legend>
+               
+                       
+                   <div class="row">
+                           <div class="col-xs-3 form-group">
+                                   <img id="pic" src="#" />
+                                   <br>
+                                   <label>Passport Size Picture</label>
+                                   
+                                   <input class="form-control" type="file" name="pic" accept="image/*" onchange="readPIC(this);"/>
+                               </div>
+                       <div class="col-xs-3 form-group">
+                               <img id="signhin" src="#"/>
+                               <br>
+                           <label>Signature in Hindi</label>
+                           
+                           <input class="form-control" type="file" name="signhin" accept="image/*" onchange="readSIGNHIN(this);" />
+                       </div>
+               
+                       <div class="col-xs-3 form-group">
+                               <img id="signeng" src="#" />
+                               <br>
+                           <label>Signature in English</label>
+                           
+                           <input class="form-control" type="file" name="signeng" accept="image/*" onchange="readSIGNENG(this);" />
+                       </div>
+
+                       <div class="col-xs-3 form-group">
+                          <img id="castecert" src="#" />
+                          <br>
+                          <label>Caste Certificate</label>
+                      
+                          <input class="form-control" type="file" name="castecert" accept="image/*" onchange="readCASTECERT(this);" />
+                        </div>
+                       
+                   </div>
+                   <label>-- Images size should be less than 2 MB</label>
+                   <br>
+                   <label>-- Images should be clear.</label>
+                   <br>
+                   <label>-- Allowed Image format: .jpg/.jpeg/.png/.bmp</label>
+           </fieldset>
+           <div class="form-group">
+                <div class="col-xs-6 form-group">
+                        <label for="exampleInputName2">Amount to be Paid</label>
+                        <input type="text" class="form-control" id="exampleInputName2" name="amount" value="1" readonly>
+                </div>
+                           <div class="g-recaptcha" data-sitekey="6LdDXcQUAAAAAOb-EiNPKcCACkwCbKD-VTGPeFqT"></div>
+                           
+                       </div>
+                       
+           <button type="submit" style="padding: 10px 50px; font-size: 20px;" class="btn btn-primary pull-right">PROCEED TO PAY</button>
+         
+       </form>
+     
+       
+
+       registered = False
+    if request.method == 'POST':
+        candForm = JobApplyForm(data=request.POST)
+        if candForm.is_valid():
+            candForm.save(commit=False)
+            candForm.jobName = job.jobName
+            candForm.jobID = job.pk
+            candForm.dob = request.POST.get('dob')
+            candForm.percentage1 = request.POST.get('percentage1')
+            candForm.percentage2 = request.POST.get('percentage2')
+            candForm.percentage3 = request.POST.get('percentage3')
+            if 'pic' in request.FILES:
+                print('found it')
+                candForm.pic = request.FILES['pic']
+            if 'signhin' in request.FILES:
+                print('found it')
+                candForm.signhin = request.FILES['signhin']
+            if 'signeng' in request.FILES:
+                print('found it')
+                candForm.signeng = request.FILES['signeng']
+            if 'castecert' in request.FILES:
+                print('found it')
+                candForm.castecert = request.FILES['castecert']  
+            candForm.save()
+            registered = True
+        else:
+            print(candForm.errors)
+    else:
+        print('naaaaaaaaaaaa')
+        candForm = JobApplyForm()
+    
+    return render(request,'applyJob.html',
+                        {
+                            'candForm': candForm,
+                            'registered':registered,
+                            'jobName': job.jobName,
+                            'id': job.pk
+                        })

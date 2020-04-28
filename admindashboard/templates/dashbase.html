@@ -1,0 +1,238 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GMT Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static "bower_components/font-awesome/css/font-awesome.min.css" %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static "bower_components/Ionicons/css/ionicons.min.css" %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static "css/AdminLTE.min.css" %}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{% static "css/skins/_all-skins.min.css" %}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{% static "bower_components/morris.js/morris.css" %}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{% static "bower_components/jvectormap/jquery-jvectormap.css" %}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{% static "bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static "bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{% static "plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" %}">
+
+  
+  <link rel="stylesheet" href="{% static "plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" %}">
+  <link rel="stylesheet" href="{% static "plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.min.css" %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" %}">
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>G</b>M T</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>GreenWichTime</b>NGO</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+          <li class="dropdown user user-menu">
+              {% if user.is_authenticated %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{{ user.adminprofile.image.url }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ user.username }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{ user.adminprofile.image.url }}" class="img-circle" alt="User Image">
+
+                <p>
+                  {{ user.username }}
+                  <small>GMT Admin</small>
+                </p>
+              </li>
+              {% endif %}
+            
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{% url 'admindashboard:profile' %}" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{% url 'admindashboard:logout' %}" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+          {% if user.is_authenticated %}
+        <div class="pull-left image">
+          <img src="{{ user.adminprofile.image.url }}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ user.username }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+          {% endif %}
+      </div>
+     
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="#">
+            <a href="{% url 'admindashboard:dashboard' %}">
+              <i class="fa fa-dashboard"></i> <span>Dashboard</span>         
+            </a>
+          </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Jobs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{% url 'admindashboard:addJob' %}"><i class="fa fa-circle-o"></i> Add New Job</a></li>
+            <li><a href="{% url 'admindashboard:allJobs' %}"><i class="fa fa-circle-o"></i> All Jobs</a></li>
+          
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Candidates</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{% url 'admindashboard:allCandidates' %}"><i class="fa fa-circle-o"></i> All</a></li>
+            <li><a href="{% url 'admindashboard:jobWiseCandidates' %}"><i class="fa fa-circle-o"></i>Applied Job Wise</a></li>
+            <li><a href="{% url 'admindashboard:jobWiseSeleCandidates' %}"><i class="fa fa-circle-o"></i>Shortlisted Job Wise</a></li>
+          </ul>
+        </li>
+        <li class="#">
+          <a href="{% url 'admindashboard:peopleQueries' %}">
+            <i class="fa  fa-question-circle"></i> <span>People Queries</span>         
+          </a>
+        </li>
+        <li class="#">
+            <a href="{% url 'admindashboard:prepareNewMail' %}">
+              <i class="fa  fa-envelope"></i> <span>Send New Mail</span>         
+            </a>
+          </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
+
+    {% block body_block %}
+
+    {% endblock %}
+
+ 
+  </div>
+  <!-- ./wrapper -->
+  
+  <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{% static "bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+  <!-- Morris.js charts -->
+  <script src="{% static "bower_components/raphael/raphael.min.js" %}"></script>
+  <script src="{% static "bower_components/morris.js/morris.min.js" %}"></script>
+  <!-- Sparkline -->
+  <script src="{% static "bower_components/jquery-sparkline/dist/jquery.sparkline.min.js" %}"></script>
+  <!-- jvectormap -->
+  <script src="{% static "plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" %}"></script>
+  <script src="{% static "plugins/jvectormap/jquery-jvectormap-world-mill-en.js" %}"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="{% static "bower_components/jquery-knob/dist/jquery.knob.min.js" %}"></script>
+  <!-- daterangepicker -->
+  <script src="{% static "bower_components/moment/min/moment.min.js" %}"></script>
+  <script src="{% static "bower_components/bootstrap-daterangepicker/daterangepicker.js" %}"></script>
+  <!-- datepicker -->
+  <script src="{% static "bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" %}"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="{% static "plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" %}"></script>
+  <!-- Slimscroll -->
+  <script src="{% static "bower_components/jquery-slimscroll/jquery.slimscroll.min.js" %}"></script>
+  <!-- FastClick -->
+  <script src="{% static "bower_components/fastclick/lib/fastclick.js" %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static "js/adminlte.min.js" %}"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="{% static "js/pages/dashboard.js" %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static "js/demo.js" %}"></script>
+
+  <script src="{% static "js/jquery-datatable.js" %}"></script>
+  <script src="{% static "bower_components/datatables.net/js/jquery.dataTables.min.js" %}"></script>
+  <script src="{% static "bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js" %}"></script>
+
+  <!-- Jquery DataTable Plugin Js -->
+  <script src="{% static "plugins/jquery-datatable/jquery.dataTables.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.flash.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/jszip.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/pdfmake.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/vfs_fonts.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.html5.min.js" %}"></script>
+      <script src="{% static "plugins/jquery-datatable/extensions/export/buttons.print.min.js" %}"></script>
+ 
+      <script src="{% static "plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" %}"></script>
+      <script>
+          $(function () {
+            //Add text editor
+            $("#compose-textarea").wysihtml5();
+          });
+          
+        </script>
+  </body>
+  </html>
+  
